@@ -1,0 +1,16 @@
+# SQRT IDEAS
+
+
+Catalog: [https://codeforces.com/catalog](https://codeforces.com/catalog)
+
+Common Ideas:
+[https://gemini.google.com/app/ba2c164c01dd3cf8](https://gemini.google.com/app/ba2c164c01dd3cf8)
+
+![952E781A-EE3E-407C-A049-6522D042FEA9](images/952E781A-EE3E-407C-A049-6522D042FEA9.png)
+
+
+
+![48580667-4D41-43F3-B7A1-3A10C3EA350C](images/48580667-4D41-43F3-B7A1-3A10C3EA350C.png)
+
+![DA2F69B1-9CE9-4AC1-9204-EA1810259A42](images/DA2F69B1-9CE9-4AC1-9204-EA1810259A42.png)
+![7DCD2754-EBA6-47D2-BA0A-0837B161A480](images/7DCD2754-EBA6-47D2-BA0A-0837B161A480.png)

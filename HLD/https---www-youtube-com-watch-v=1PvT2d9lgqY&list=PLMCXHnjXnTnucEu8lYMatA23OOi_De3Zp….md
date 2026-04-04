@@ -1,0 +1,3 @@
+# https://www.youtube.com/watch?v=1PvT2d9lgqY&list=PLMCXHnjXnTnucEu8lYMatA23OOi_De3Zp…
+
+[https://www.youtube.com/watch?v=1PvT2d9lgqY&list=PLMCXHnjXnTnucEu8lYMatA23OOi_De3Zp&index=24](https://www.youtube.com/watch?v=1PvT2d9lgqY&list=PLMCXHnjXnTnucEu8lYMatA23OOi_De3Zp&index=24)
