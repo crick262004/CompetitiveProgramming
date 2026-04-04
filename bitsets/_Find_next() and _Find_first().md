@@ -1,3 +1,0 @@
-# _Find_next() and _Find_first()
-
-![C4076BF1-79A8-4223-B30A-6E8975B89899](images/C4076BF1-79A8-4223-B30A-6E8975B89899.png)
