@@ -4,46 +4,25 @@
 #include <bits/stdc++.h>
 #define int long long
 using namespace std;
-int d = 20;
-
- // the bit-width of the numbers
-
-vector<int> basis(d, 0);
-
- // basis[i] keeps the mask of the vector whose f value is i
-
-int sz;
-
- // Current size of the basis
-
+int d = 20; // the bit-width of the numbers
+vector<int> basis(d, 0); // basis[i] keeps the mask of the vector whose f value is i
+int sz; // Current size of the basis
 const int mod = 1e9 + 7;
 
 void insertVector(int mask) {
     for (int i = d-1; i >= 0; i--) {
-   if ((mask & 1ll << i) == 0) continue;
-
- // continue if i != f(mask)
-
-   if (!basis[i]) {
-
- // If there is no basis vector with the i'th bit set, then insert this vector into the basis
-
+   if ((mask & 1ll << i) == 0) continue; // continue if i != f(mask)
+   if (!basis[i]) { // If there is no basis vector with the i'th bit set, then insert this vector into the basis
        basis[i] = mask;
        ++sz;
        return;
    }else{
-       mask ^= basis[i];
-
- // Otherwise subtract the basis vector from this vector
-
+       mask ^= basis[i]; // Otherwise subtract the basis vector from this vector
    }
     }
 }
 
-int kthlargest(int k){
-
- // the k'th hightest number from the Set S
-
+int kthlargest(int k){ // the k'th hightest number from the Set S
     int mask = 0;
     int tot = (1ll<<sz);
     for(int i = d-1; i>=0; i--){
@@ -88,16 +67,8 @@ int32_t main() {
 
     }
 
-    int distincts = (1ll << sz);
-
- // the number of distinct integers that can be represented using xor over any subset of the set of the given elements.
-
-    int maxSubsetXor = 0;
-
- // maximum possible xor of the elements of some subset of 
-
-𝑆
-
+    int distincts = (1ll << sz); // the number of distinct integers that can be represented using xor over any subset of the set of the given elements.
+    int maxSubsetXor = 0; // maximum possible xor of the elements of some subset of S
     for(int i = d-1; i>=0; i--){
    if( ( ((maxSubsetXor>>i)&1ll) == 0) && basis[i]){
        maxSubsetXor ^= basis[i];
