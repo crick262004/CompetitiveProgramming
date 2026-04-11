@@ -3,18 +3,16 @@
 # 
 # ![B7EDC453-D347-4D97-B45C-1766E3FD4692](images/B7EDC453-D347-4D97-B45C-1766E3FD4692.png)
 ![58E37A42-2962-4DDC-A48B-9A40BDF64422](images/58E37A42-2962-4DDC-A48B-9A40BDF64422.png)
- 
-     **Identify the problem can be modelled by conjective form.
+
+     Identify the problem can be modelled by conjective form.
 
 Conjective form 
 Implicative form
 Directed Graph
 SCC Compression
-x & ~x check, and assignment**
+x & ~x check, and assignment
 
-  
      [https://cp-algorithms.com/graph/2SAT.html](https://cp-algorithms.com/graph/2SAT.html)
- 
 
 struct *TwoSatSolver* {
 public:
@@ -46,10 +44,10 @@ public:
     }
 
     bool solve_2SAT(){
-        *// for debugging :* 
-        *// for(int i = 1; i<= n_vertices; i++){*
-        *//     cout << adj[i] << " : " << i << endl;*
-        *// }*
+        // for debugging :* 
+        // for(int i = 1; i<= n_vertices; i++){*
+        //     cout << adj[i] << " : " << i << endl;*
+        // }*
         order.clear();
         used.assign(n_vertices, false);
         for (int i = 0; i < n_vertices; ++i) {
@@ -74,9 +72,9 @@ public:
     }
 
     void add_disjunction(int a, bool na, int b, bool nb) {
-        *// converts conjuctions into implications, and hence, edges in the directed graph*
+        // converts conjuctions into implications, and hence, edges in the directed graph*
 
-        *// na and nb signify whether a and b are to be negated* 
+        // na and nb signify whether a and b are to be negated* 
         a = 2 * a ^ na;
         b = 2 * b ^ nb;
         int neg_a = a ^ 1;
@@ -87,16 +85,16 @@ public:
         adj_t[a].push_back(neg_b);
     }
 
-    *// static void example_usage() {*
-    *//     TwoSatSolver solver(3); // a, b, c*
-    *//     solver.add_disjunction(0, false, 1, true);  //     a  v  not b*
-    *//     solver.add_disjunction(0, true, 1, true);   // not a  v  not b*
-    *//     solver.add_disjunction(1, false, 2, false); //     b  v      c*
-    *//     solver.add_disjunction(0, false, 0, false); //     a  v      a*
-    *//     assert(solver.solve_2SAT() == true);*
-    *//     auto expected = vector<bool>(True, False, True);*
-    *//     assert(solver.assignment == expected);*
-    *// }*
+    // static void example_usage() {*
+    //     TwoSatSolver solver(3); // a, b, c*
+    //     solver.add_disjunction(0, false, 1, true);  //     a  v  not b*
+    //     solver.add_disjunction(0, true, 1, true);   // not a  v  not b*
+    //     solver.add_disjunction(1, false, 2, false); //     b  v      c*
+    //     solver.add_disjunction(0, false, 0, false); //     a  v      a*
+    //     assert(solver.solve_2SAT() == true);*
+    //     auto expected = vector<bool>(True, False, True);*
+    //     assert(solver.assignment == expected);*
+    // }*
 };
 ![86E5A892-945E-4A19-AF70-8E43701A36CC](images/86E5A892-945E-4A19-AF70-8E43701A36CC.png)
 ![5CB9E9FC-D167-4525-9DC7-63DAA700E196](images/5CB9E9FC-D167-4525-9DC7-63DAA700E196.png)

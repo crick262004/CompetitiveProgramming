@@ -1,8 +1,7 @@
 # Gaussian Elimination
 
- 
      [https://cp-algorithms.com/linear_algebra/linear-system-gauss.html](https://cp-algorithms.com/linear_algebra/linear-system-gauss.html)
- 
+
 ![5E485ABB-5607-4A93-9726-39FFB1A5A8EA](images/5E485ABB-5607-4A93-9726-39FFB1A5A8EA.png)
 ![249B96EA-7CE0-498A-BD96-4F83DB2B84FA](images/249B96EA-7CE0-498A-BD96-4F83DB2B84FA.png)
 ![A1146EA5-8CB0-4556-A384-AC5EF29878F7](images/A1146EA5-8CB0-4556-A384-AC5EF29878F7.png)
@@ -75,16 +74,10 @@ int gauss (vector < bitset<N> > a, int n, int m, bitset<N> & ans) {
         // The rest of implementation is the same as above
 }
 
-
- 
      Rank & Basis:
 
-  
      [https://judge.yosupo.jp/problem/system_of_linear_equations](https://judge.yosupo.jp/problem/system_of_linear_equations)
- 
- 
-     [https://chatgpt.com/c/69468f84-dd54-8323-82af-abd868314248](https://chatgpt.com/c/69468f84-dd54-8323-82af-abd868314248)
- 
 
+     [https://chatgpt.com/c/69468f84-dd54-8323-82af-abd868314248](https://chatgpt.com/c/69468f84-dd54-8323-82af-abd868314248)
 
 ![69BF4970-CD3C-4D19-8274-948AB13B5691](images/69BF4970-CD3C-4D19-8274-948AB13B5691.png)
