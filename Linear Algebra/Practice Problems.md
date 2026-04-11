@@ -1,10 +1,6 @@
 # Practice Problems
-
- 
-     # [https://www.perplexity.ai/search/provide-some-standard-cses-or-EC1e.HHAQLac1uv09DD5mQ](https://www.perplexity.ai/search/provide-some-standard-cses-or-EC1e.HHAQLac1uv09DD5mQ)
- 
- 
-     [https://gemini.google.com/app/ef8bea4d5be0024c](https://gemini.google.com/app/ef8bea4d5be0024c)
+[https://www.perplexity.ai/search/provide-some-standard-cses-or-EC1e.HHAQLac1uv09DD5mQ](https://www.perplexity.ai/search/provide-some-standard-cses-or-EC1e.HHAQLac1uv09DD5mQ)
+[https://gemini.google.com/app/ef8bea4d5be0024c](https://gemini.google.com/app/ef8bea4d5be0024c)
  
 
 * [Spoj - Xor Maximization](http://www.spoj.com/problems/XMAX/)

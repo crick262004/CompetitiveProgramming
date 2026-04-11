@@ -15,6 +15,11 @@ Follow these strict rules based on our previous cleanups:
 
 1. **Analyze Folder**: Check the contents of the specified folder using terminal or workspace tools. Look specifically for `.md` files, `images/`, and `attachments/`.
 2. **Clean Markdown Files & Clumped Entities**: Ensure no strange HTML tags (like `<span style="...">` or inline CSS) are left from exports. Convert them to standard Markdown. Fix heading structures if they just awkwardly duplicate the file name, and explicitly remove trailing empty headers (like `# ` lines with nothing else).
+    
+    - **Fix heavily indented and spaced elements**: Markdown might contain elements like `     # [URL](...)` or `     CODE:`. Remove the excessive leading spaces so they are flush with the left margin. Standardize awkward titles like `CODE:` or `THEORY:` to normal markdown headers (`## CODE`, `## THEORY`).
+    - **Handle Extreme Splitting inside Code**: Some C++ declarations might be randomly split across lines (e.g. `const \n\n int mod = 1e9 + 7;`). Make sure to merge them into valid single-line declarations (`const int mod = 1e9 + 7;`).
+    - **Handle Variable Image/Link whitespace**: When fixing clumped images or links, the regex `\)\s+!\[` (for any amount of whitespace) should be used instead of just replacing `) ![` since exports sometimes drop 50+ spaces between links or images!
+        
     - **Fix Clumped Links and Images**: Note-taking apps frequently export multiple images or links jammed onto the exact same line with spaces between them (e.g., `![img1](...)     ![img2](...)`). You MUST strictly separate them so every image and link is on its own line. Use regex or string matching to find `) ![` sequences.
     - **Remove Stray Indentation**: Remove awkward leading spaces (e.g., 4 or 5 spaces) before normal text and markdown links that accidentally cause Markdown to parse them as preformatted code blocks. Look out for C++ lambdas formatted as `[int a, int b](...)` that were accidentally parsed as broken Markdown links, and wrap them in backticks (\`).
 3. **Handle Empty/Stub Files**: Identify files that are under 50 characters or empty (e.g. `Catalog-.md`). Either delete them if they are clearly useless or ask the user for confirmation before deleting.

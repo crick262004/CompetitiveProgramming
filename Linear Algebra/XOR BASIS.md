@@ -1,6 +1,5 @@
 # XOR BASIS
-
-     CODE:
+## CODE
 ```cpp
 #include <bits/stdc++.h>
 #define int long long
@@ -17,9 +16,7 @@ int sz;
 
  // Current size of the basis
 
-const
-
- int mod = 1e9 + 7;
+const int mod = 1e9 + 7;
 
 void insertVector(int mask) {
     for (int i = d-1; i >= 0; i--) {
@@ -110,19 +107,15 @@ int32_t main() {
     return 0;
 }
 ```
-
-     THEORY:
+## THEORY
 
 ![F55B8625-62FB-4309-8F03-AABCD4E986DA](images/F55B8625-62FB-4309-8F03-AABCD4E986DA.png)
-
 ![83D475E6-FAA3-4999-8447-EECAF055D609](images/83D475E6-FAA3-4999-8447-EECAF055D609.png)
 ![EF09F448-B342-43E7-BE12-A90818DA3BAB](images/EF09F448-B342-43E7-BE12-A90818DA3BAB.png)
 ![C5DC1905-6066-437C-847B-41703F711366](images/C5DC1905-6066-437C-847B-41703F711366.png)
 ![87F61970-28D9-4C40-B990-CAA7456A20BD](images/87F61970-28D9-4C40-B990-CAA7456A20BD.png)
 ![BA44C623-797E-41FE-B010-AD8D62483DC2](images/BA44C623-797E-41FE-B010-AD8D62483DC2.png)
 ![A36BC517-B6F2-4EC5-BDD2-5FBD9CEB8673](images/A36BC517-B6F2-4EC5-BDD2-5FBD9CEB8673.png)
-
-     [https://codeforces.com/blog/entry/68953](https://codeforces.com/blog/entry/68953)
-
+[https://codeforces.com/blog/entry/68953](https://codeforces.com/blog/entry/68953)
 ![8277C637-B743-4FD8-A07D-30112E6079DA](images/8277C637-B743-4FD8-A07D-30112E6079DA.png)
 ![3210E056-0E90-4734-BABF-BAD97656DD3D](images/3210E056-0E90-4734-BABF-BAD97656DD3D.png)
