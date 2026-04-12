@@ -1,9 +1,9 @@
 // Polygon Lattice Points: Boundary and Inside
 // Polygon Lattice Points:
 
-Boundary and Inside
+// Boundary and Inside
 
-ll twice_area(vector<P>*&* polygon){
+ll twice_area(vector<P>& polygon){
     ll ans = 0;
     int n = polygon.size();
     for(int i = 0; i<n; i++){

@@ -75,6 +75,6 @@ void test_case(){
 
  
 ```
-# **Alternative method to taking a ray, just imagine the ray, and use these checks to check Line segment intersections.**
+## Alternative method to taking a ray, just imagine the ray, and use these checks to check Line segment intersections.
 
- ![C4BEE5F7-6902-4D71-BA63-6E41DAF13A47](images/C4BEE5F7-6902-4D71-BA63-6E41DAF13A47.png)
+![C4BEE5F7-6902-4D71-BA63-6E41DAF13A47](images/C4BEE5F7-6902-4D71-BA63-6E41DAF13A47.png)

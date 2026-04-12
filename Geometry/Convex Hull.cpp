@@ -1,8 +1,8 @@
 // Convex Hull
 
-**Upper hull - Lower hull way ( sorting points by {x,y} )**
+// Upper hull - Lower hull way ( sorting points by {x,y} )
 
- struct P{
+struct P{
     long long x, y; 
     void read(){
         cin >> x >> y;

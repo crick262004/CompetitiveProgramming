@@ -1,10 +1,10 @@
 // Polygon Area
-// include <bits/stdc++.h>
-// define ll long long
-// define cno cout << "NO" << endl;
-// define cyes cout << "YES" << endl;
+#include <bits/stdc++.h>
+#define ll long long
+#define cno cout << "NO" << endl;
+#define cyes cout << "YES" << endl;
 
-ll twice_area(vector<P>*&* polygon){
+ll twice_area(vector<P>& polygon){
     ll ans = 0;
     int n = polygon.size();
     for(int i = 0; i<n; i++){
@@ -27,17 +27,17 @@ struct P{
     void read(){
         cin >> x >> y;
     }
-    P operator - (const P*&* b) const{
+    P operator - (const P& b) const{
         return P{x - b.x, y - b.y};
     }
-    void operator -= (const P*&* b) {
+    void operator -= (const P& b) {
         x -= b.x;
         y -= b.y;
     }
-    long long operator * (const P*&* b) const{ // vector product aka cross product aka right hand curling 
+    long long operator * (const P& b) const{ // vector product aka cross product aka right hand curling 
         return x*b.y - y*b.x;
     }
-    long long triangle (const P*&* b, const P*&* c) const {
+    long long triangle (const P& b, const P& c) const {
         return (b - *this) * (c - *this);
     }
 };
