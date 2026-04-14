@@ -1,12 +1,11 @@
 # Point wrt Polygon
 
-
 ```cpp
 bool segment_contains(P p1, P p2, P p3){
 
-    return((p1.triangle(p2, p3) == 0) && 
-            (min(p1.x, p2.x) <= p3.x && max(p1.x, p2.x) >= p3.x) && 
-            (min(p1.y, p2.y) <= p3.y && max(p1.y, p2.y) >= p3.y) 
+    return((p1.triangle(p2, p3) == 0) &&
+            (min(p1.x, p2.x) <= p3.x && max(p1.x, p2.x) >= p3.x) &&
+            (min(p1.y, p2.y) <= p3.y && max(p1.y, p2.y) >= p3.y)
             );
 }
 
@@ -31,7 +30,7 @@ bool intersect(P p1, P p2, P p3, P p4){
             }
             if(p1.triangle(p2, p3)<0 && p1.triangle(p2, p4) < 0){
                 return false;
-            } 
+            }
 
             swap(p1, p3);
             swap(p2, p4);
@@ -73,8 +72,9 @@ void test_case(){
     }
 }
 
- 
+
 ```
+
 ## Alternative method to taking a ray, just imagine the ray, and use these checks to check Line segment intersections.
 
 ![C4BEE5F7-6902-4D71-BA63-6E41DAF13A47](images/C4BEE5F7-6902-4D71-BA63-6E41DAF13A47.png)
