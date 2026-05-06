@@ -1,4 +1,8 @@
-// Ordered Multiset workaround part 1.
+# Ordered Multiset workaround part 1.
+
+
+![3DBE5031-474C-4EB6-8981-9BA89EA58BAF](images/3DBE5031-474C-4EB6-8981-9BA89EA58BAF.png)
+```cpp
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
@@ -25,9 +29,13 @@ int main() {
         cout << i.first << " ";
     return 0;
 }
+```
 
-// Nice practice problem:
+ 
+     Nice practice problem:
 
+ ![E9EFC7D2-B280-4FEE-96EB-D90AD377F560](images/E9EFC7D2-B280-4FEE-96EB-D90AD377F560.png)
+```cpp
 #include<bits/stdc++.h>
 #include<ext/pb_ds/assoc_container.hpp>
 #include<ext/pb_ds/tree_policy.hpp>
@@ -77,3 +85,4 @@ signed main()
         solve();
     return 0;
 }
+```

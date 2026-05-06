@@ -1,4 +1,7 @@
-// Ordered Multiset workaround part 2.
+# Ordered Multiset workaround part 2.
+
+![5C26BEA7-2136-45A4-9E86-FB7F202F758C](images/5C26BEA7-2136-45A4-9E86-FB7F202F758C.png)
+```cpp
 #include <bits/stdc++.h>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -56,3 +59,7 @@ void Clear(ordered_set &s){ //this function clears all the elements from the set
 int Size(ordered_set &s){ //this function returns the size of the set.
      return (int)(s.size());
 }
+```
+
+
+![2E12606B-7413-4996-8AB0-1C5698451EFD](images/2E12606B-7413-4996-8AB0-1C5698451EFD.png)
