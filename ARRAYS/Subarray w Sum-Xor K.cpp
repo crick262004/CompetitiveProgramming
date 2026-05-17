@@ -2,50 +2,33 @@
 
 // Longest Subarray with given Sum K(Positives)
 // 2 pointer approach
-
 int getLongestSubarray(vector<int>& a, long long k) {
+    int n = a.size(); // size of the array.
 
-int n = a.size(); // size of the array.
-
-int left = 0, right = 0; // 2 pointers
-
-long long sum = a[0];
-
-int maxLen = 0;
-
+    int left = 0, right = 0; // 2 pointers
+    long long sum = a[0];
+    int maxLen = 0;
     while (right < n) {
+        // if sum > k, reduce the subarray from left
+        // until sum becomes less or equal to k:
+        while (left <= right && sum > k) {
+            sum -= a[left];
+            left++;
+        }
 
-    // if sum > k, reduce the subarray from left
+        // if sum = k, update the maxLen i.e. answer:
+        if (sum == k) {
+            maxLen = max(maxLen, right - left + 1);
+        }
 
-    // until sum becomes less or equal to k:
-
-    while (left <= right && sum > k) {
-
-    sum -= a[left];
-
-    left++;
-
-    }
-
-    // if sum = k, update the maxLen i.e. answer:
-
-    if (sum == k) {
-
-    maxLen = max(maxLen, right - left + 1);
-
-    }
-
-    // Move forward thw right pointer:
-
-    right++;
-
-    if (right < n) sum += a[right];
-
+        // Move forward thw right pointer:
+        right++;
+        if (right < n) sum += a[right];
     }
 
     return maxLen;
+}
 
-    }
 
 // Longest Subarray with sum K | [Postives and Negatives]
 // prefix sum approach:
@@ -57,20 +40,24 @@ int getLongestSubarray(vector<int>& a, int k) {
     int sum = 0;
     int maxLen = 0;
     for (int i = 0; i < n; i++) {
-    //calculate the prefix sum till index i:
-        sum += a[i]; // if the sum = k, update the maxLen:
+        //calculate the prefix sum till index i:
+        sum += a[i];
+
+        // if the sum = k, update the maxLen:
         if (sum == k) {
             maxLen = max(maxLen, i + 1);
         }
 
-    // calculate the sum of remaining part i.e. x-k:
-        int rem = sum - k; //Calculate the length and update maxLen:
+        // calculate the sum of remaining part i.e. x-k:
+        int rem = sum - k;
+
+        //Calculate the length and update maxLen:
         if (preSumMap.find(rem) != preSumMap.end()) {
             int len = i - preSumMap[rem];
             maxLen = max(maxLen, len);
         }
 
-    //Finally, update the map checking the conditions:
+        //Finally, update the map checking the conditions:
         if (preSumMap.find(sum) == preSumMap.end()) {
             preSumMap[sum] = i;
         }
@@ -79,7 +66,8 @@ int getLongestSubarray(vector<int>& a, int k) {
     return maxLen;
 }
 
-     Count Subarrays w sum/XOR K
+
+// Count Subarrays w sum/XOR K
 
 int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
     int n = arr.size(); // size of the given array.
@@ -88,11 +76,17 @@ int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
 
     mpp[0] = 1; // Setting 0 in the map.
     for (int i = 0; i < n; i++) {
-    // add current element to prefix Sum:
-        preSum += arr[i]; // Calculate x-k:
-        int remove = preSum - k; // Add the number of subarrays to be removed:
-        cnt += mpp[remove]; // Update the count of prefix sum
-    // in the map.
+        // add current element to prefix Sum:
+        preSum += arr[i];
+
+        // Calculate x-k:
+        int remove = preSum - k;
+
+        // Add the number of subarrays to be removed:
+        cnt += mpp[remove];
+
+        // Update the count of prefix sum
+        // in the map.
         mpp[preSum] += 1;
     }
     return cnt;
@@ -106,14 +100,19 @@ int subarraysWithXorK(vector<int> a, int k) {
     int cnt = 0;
 
     for (int i = 0; i < n; i++) {
-    // prefix XOR till index i:
-        xr = xr ^ a[i]; //By formula: x = xr^k:
-        int x = xr ^ k; // add the occurrence of xr^k
-    // to the count:
-        cnt += mpp[x]; // Insert the prefix xor till index i
-    // into the map:
+        // prefix XOR till index i:
+        xr = xr ^ a[i];
+
+        //By formula: x = xr^k:
+        int x = xr ^ k;
+
+        // add the occurrence of xr^k
+        // to the count:
+        cnt += mpp[x];
+
+        // Insert the prefix xor till index i
+        // into the map:
         mpp[xr]++;
     }
     return cnt;
 }
-
