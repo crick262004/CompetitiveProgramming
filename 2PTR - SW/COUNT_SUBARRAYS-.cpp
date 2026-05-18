@@ -12,21 +12,21 @@ public:
         if(k < 0)
             return 0;
         unordered_map<int, int> mp;
-        int n = nums.size();
-        int l = 0;
-        int ans = 0;
-        for(int r = 0; r<n; r++)
+    int n = nums.size();
+    int l = 0;
+    int ans = 0;
+    for(int r = 0; r<n; r++)
         {
             mp[nums[r]]++;
-            while(mp.size() > k)
+    while(mp.size() > k)
             {
                 mp[nums[l]]--;
                 if(mp[nums[l]] == 0)
                     mp.erase(nums[l]);
                 l++;
-            }
+    }
             ans += r-l+1;
-        }
+    }
         return ans;
     }
     int subarraysWithKDistinct(vector<int>& nums, int k) {
@@ -34,7 +34,7 @@ public:
     // use the less than equal to k method.
         return util(nums, k) - util(nums, k-1);
     }
-};
+    };
 
 // [ Number of Substrings Containing All Three Characters](https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/)
 
@@ -61,17 +61,17 @@ public:
     //     }
     // }
     // return ans; // striver's slightly better solution:
-        int ans = 0;
+    int ans = 0;
         vector<int> mp(3, -1); // stores the last time we saw this element, 
     // the greater the index, the better, because that means that the no. of substrings that we could include when adding to answer will be maximum (because it is used to find the smallest window ending at i/r that is valid)
-        int n= s.length();
+    int n= s.length();
 
-        for(int i = 0; i<n; i++)
+    for(int i = 0; i<n; i++)
         {
             mp[s[i]- 'a'] = i; // instead of calc no. of valid substrings that start from l to the end, 
     // we have used the optimisation of looking at the no. of valid substrings that end at i (or r).
             ans += min({mp[0],mp[1], mp[2]}) + 1;
-        }
+    }
         return ans;
     }
-};
+    };

@@ -24,7 +24,7 @@ int characterReplacement(string s, int k) {
     // there is no point in decreasing the value of maxcnt, 
     // we will only get new answers when maxcnt is at a max
             l++;
-        }
+    }
 
     // the size (r-l+1) has to be <= k + maxcnt, hence, we will need
     // maxcnt to be maximum in order to get a new answer
@@ -32,4 +32,4 @@ int characterReplacement(string s, int k) {
             ans = max(ans, r-l+1);
     }
     return ans;
-}
+    }

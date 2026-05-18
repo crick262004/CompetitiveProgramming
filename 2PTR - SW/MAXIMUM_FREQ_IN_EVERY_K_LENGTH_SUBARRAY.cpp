@@ -7,7 +7,7 @@
         auto it = msf.find(freq[a[r]]);
         if (it != msf.end()) {
             msf.erase(it);
-        }
+    }
         freq[a[r]]++;
         msf.insert(freq[a[r]]);
     }
@@ -18,14 +18,14 @@
         auto it = msf.find(freq[a[l]]);
         if (it != msf.end()) {
             msf.erase(it);
-        }
+    }
         freq[a[l]]--;
         msf.insert(freq[a[l]]);
         l++;
         auto it1 = msf.find(freq[a[r]]);
         if (it1 != msf.end()) {
             msf.erase(it1);
-        }
+    }
         freq[a[r]]++;
         msf.insert(freq[a[r]]);
         ans[l] = *msf.begin();
