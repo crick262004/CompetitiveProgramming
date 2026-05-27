@@ -1,0 +1,1 @@
+#include <sstream>\nvector<string> splitByWhitespace(const string &str)\n{\n    vector<string> tokens;\n    istringstream iss(str);\n    string token;\n    while (iss >> token)\n    { // Reads words separated by whitespace\n   tokens.push_back(token);\n    }\n    return tokens;\n}
