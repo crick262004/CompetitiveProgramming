@@ -1,7 +1,4 @@
-# BS on answer problem 
-
-  
-     # with prefix of Ts or Fs, then remaining suffix is all ulta.
+# with prefix of Ts or Fs, then remaining suffix is all ulta.
 Then it just becomes finding the rightmost/ leftmost T/F value.
  
 ![5B56A9E8-73D5-4281-8A6B-AB5828A0BF2E](images/5B56A9E8-73D5-4281-8A6B-AB5828A0BF2E.png)
