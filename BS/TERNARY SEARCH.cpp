@@ -1,8 +1,4 @@
-# TERNARY SEARCH
-
-
- 
-     int ternarySearch(int l, int r, int key, int ar[])
+int ternarySearch(int l, int r, int key, int ar[])
 {
     
   
@@ -110,5 +106,3 @@
   
       -1;
 }
-
- 

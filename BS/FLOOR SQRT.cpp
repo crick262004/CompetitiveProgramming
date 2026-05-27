@@ -1,6 +1,3 @@
-# FLOOR SQRT
-
-
 int floorSqrt(int n) {
     int low = 1, high = n;
     //Binary search on the answers:

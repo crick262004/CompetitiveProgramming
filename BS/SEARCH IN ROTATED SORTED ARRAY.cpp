@@ -1,6 +1,3 @@
-# SEARCH IN ROTATED SORTED ARRAY
-
-
 // if duplicates: 
 bool searchInARotatedSortedArrayII(vector<int>&arr, int k) {
     int n = arr.size(); // size of the array.
@@ -111,7 +108,7 @@ int findMin(vector<int>& arr) {
     }
     return ans;
 }
-# Same algo (but this time we calc index of min value)
+// Same algo (but this time we calc index of min value)
 int findKRotation(vector<int> &arr) {
     int low = 0, high = arr.size() - 1;
     int ans = INT_MAX;
@@ -154,5 +151,3 @@ int findKRotation(vector<int> &arr) {
     }
     return index;
 }
-
-

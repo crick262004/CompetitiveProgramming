@@ -1,6 +1,4 @@
-# Adjacents dependent
-
- // THIS IS A TEMPLATE FOR BS WHERE WE HAVE TO COMPARE VALUE WITH NEIGHBOURS.
+// THIS IS A TEMPLATE FOR BS WHERE WE HAVE TO COMPARE VALUE WITH NEIGHBOURS.
 
 
 int singleNonDuplicate(vector<int>& arr) {
@@ -64,6 +62,3 @@ int findPeakElement(vector<int> &arr) {
     // Dummy return statement
     return -1;
 }
-
-
-

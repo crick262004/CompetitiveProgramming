@@ -1,4 +1,5 @@
-# Real SQRT (double) Need to use an epsilon Note it is
+Need to use an epsilon
+Note it is
 
 # Real SQRT (double)
 Need to use an epsilon

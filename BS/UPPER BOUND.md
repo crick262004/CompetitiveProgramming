@@ -1,4 +1,4 @@
-# UPPER BOUND  Gayab ho gaya.
+Gayab ho gaya.
 
 # UPPER BOUND
 
