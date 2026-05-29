@@ -1,5 +1,3 @@
-Gayab ho gaya
-
 # BS on answer 
 
-Gayab ho gaya
+Gayab ho gaya.
