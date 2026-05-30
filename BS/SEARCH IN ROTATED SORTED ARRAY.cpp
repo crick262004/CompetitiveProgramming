@@ -1,3 +1,6 @@
+// SEARCH IN ROTATED SORTED ARRAY
+
+
 // if duplicates: 
 bool searchInARotatedSortedArrayII(vector<int>&arr, int k) {
     int n = arr.size(); // size of the array.

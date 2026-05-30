@@ -1,3 +1,5 @@
+// LOWER BOUND : finds the first element in a sorted range that is not…
+
 // LOWER BOUND : finds the first element in a sorted range that is not less than a given value, returning an iterator to that element
 
 int p = lower_bound(begin(a), end(a), v) - begin(a);

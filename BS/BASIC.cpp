@@ -1,4 +1,7 @@
-int binarySearch(vector<int>*&* nums, int target) {
+// BASIC
+
+
+int binarySearch(vector<int>& nums, int target) {
     int n = nums.size(); //size of the array
     int low = 0, high = n - 1;
 

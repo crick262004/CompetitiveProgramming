@@ -1,3 +1,9 @@
+# Errichto talks about modelling every BS problem as a
+
+ 
+# BS on answer problem 
+
+  
 # with prefix of Ts or Fs, then remaining suffix is all ulta.
 Then it just becomes finding the rightmost/ leftmost T/F value.
  
