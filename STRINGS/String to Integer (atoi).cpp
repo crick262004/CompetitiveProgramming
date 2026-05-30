@@ -1,1 +1,32 @@
-// String to Integer (atoi) : doesn’t stoi or stoll do this?\n\n\n[String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/)\n\n : doesn’t stoi or stoll do this?\n\n\nint myAtoi(string s) {\n    int n = s.length();\n    int i = 0;\n    int ans = 0;\n    bool neg = false; // whitespaces\n    while(i  '9' )\n       break;\n   int dig = s[i] - '0';\n   if(!neg)\n   {\n       if((double)ans*10 + dig >= (double)INT_MAX) return INT_MAX;\n   }\n   else\n   {\n       if((double)ans*10 + dig > (double)INT_MAX) return INT_MIN;\n   }\n   ans = ans * 10 + dig;\n   i++;\n    }\n    if(neg)\n   return -1 * ans;\n    else\n   return ans;\n}
+// String to Integer (atoi) : doesn’t stoi or stoll do this?
+
+
+[String to Integer (atoi)](https://leetcode.com/problems/string-to-integer-atoi/)
+
+ : doesn’t stoi or stoll do this?
+
+
+int myAtoi(string s) {
+    int n = s.length();
+    int i = 0;
+    int ans = 0;
+    bool neg = false; // whitespaces
+    while(i  '9' )
+       break;
+   int dig = s[i] - '0';
+   if(!neg)
+   {
+       if((double)ans*10 + dig >= (double)INT_MAX) return INT_MAX;
+   }
+   else
+   {
+       if((double)ans*10 + dig > (double)INT_MAX) return INT_MIN;
+   }
+   ans = ans * 10 + dig;
+   i++;
+    }
+    if(neg)
+   return -1 * ans;
+    else
+   return ans;
+}

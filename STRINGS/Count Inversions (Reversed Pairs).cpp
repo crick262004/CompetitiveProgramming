@@ -1,1 +1,67 @@
-// Count Inversions (Reversed Pairs) : Keep, in arrays and sorting, not…\n\n// Count Inversions (Reversed Pairs) : Keep, in arrays and sorting, not here\n\nThe trick is that Counting Inversions is very closely related to sorting.\nSo during a merge sort, we can detect a pair.\nAs in, during the very process of merge sort,  during the merge algorithm, we just need to add in one more step.\nThis helps going from n2 to nlogn\n\nint merge(vector<int> &arr, int low, int mid, int high) {\n    vector<int> temp; *// temporary array*\n    int left = low;      *// starting index of left half of arr*\n    int right = mid + 1;   *// starting index of right half of arr*\n\n    *//Modification 1: cnt variable to count the pairs:*\n    int cnt = 0;\n\n    *//storing elements in the temporary array in a sorted manner//*\n\n    while (left <= mid && right <= high) {\n   if (arr[left] <= arr[right]) {\n       temp.push_back(arr[left]);\n       left++;\n   }\n   else {\n       temp.push_back(arr[right]);\n       cnt += (mid - left + 1); *//Modification 2*\n       right++;\n   }\n    }\n\n    *// if elements on the left half are still left //*\n\n    while (left <= mid) {\n   temp.push_back(arr[left]);\n   left++;\n    }\n\n    *//  if elements on the right half are still left //*\n    while (right <= high) {\n   temp.push_back(arr[right]);\n   right++;\n    }\n\n    *// transfering all elements from temporary to arr //*\n    for (int i = low; i <= high; i++) {\n   arr[i] = temp[i - low];\n    }\n\n    return cnt; *// Modification 3*\n}\n\nint mergeSort(vector<int> &arr, int low, int high) {\n    int cnt = 0;\n    if (low >= high) return cnt;\n    int mid = (low + high) / 2 ;\n    cnt += mergeSort(arr, low, mid);  *// left half*\n    cnt += mergeSort(arr, mid + 1, high); *// right half*\n    cnt += merge(arr, low, mid, high);  *// merging sorted halves*\n    return cnt;\n}\n\nint numberOfInversions(vector<int>&a, int n) {\n\n    *// Count the number of pairs:*\n    return mergeSort(a, 0, n - 1);\n}
+// Count Inversions (Reversed Pairs) : Keep, in arrays and sorting, not…
+
+// Count Inversions (Reversed Pairs) : Keep, in arrays and sorting, not here
+
+The trick is that Counting Inversions is very closely related to sorting.
+So during a merge sort, we can detect a pair.
+As in, during the very process of merge sort,  during the merge algorithm, we just need to add in one more step.
+This helps going from n2 to nlogn
+
+int merge(vector<int> &arr, int low, int mid, int high) {
+    vector<int> temp; *// temporary array*
+    int left = low;      *// starting index of left half of arr*
+    int right = mid + 1;   *// starting index of right half of arr*
+
+    *//Modification 1: cnt variable to count the pairs:*
+    int cnt = 0;
+
+    *//storing elements in the temporary array in a sorted manner//*
+
+    while (left <= mid && right <= high) {
+   if (arr[left] <= arr[right]) {
+       temp.push_back(arr[left]);
+       left++;
+   }
+   else {
+       temp.push_back(arr[right]);
+       cnt += (mid - left + 1); *//Modification 2*
+       right++;
+   }
+    }
+
+    *// if elements on the left half are still left //*
+
+    while (left <= mid) {
+   temp.push_back(arr[left]);
+   left++;
+    }
+
+    *//  if elements on the right half are still left //*
+    while (right <= high) {
+   temp.push_back(arr[right]);
+   right++;
+    }
+
+    *// transfering all elements from temporary to arr //*
+    for (int i = low; i <= high; i++) {
+   arr[i] = temp[i - low];
+    }
+
+    return cnt; *// Modification 3*
+}
+
+int mergeSort(vector<int> &arr, int low, int high) {
+    int cnt = 0;
+    if (low >= high) return cnt;
+    int mid = (low + high) / 2 ;
+    cnt += mergeSort(arr, low, mid);  *// left half*
+    cnt += mergeSort(arr, mid + 1, high); *// right half*
+    cnt += merge(arr, low, mid, high);  *// merging sorted halves*
+    return cnt;
+}
+
+int numberOfInversions(vector<int>&a, int n) {
+
+    *// Count the number of pairs:*
+    return mergeSort(a, 0, n - 1);
+}

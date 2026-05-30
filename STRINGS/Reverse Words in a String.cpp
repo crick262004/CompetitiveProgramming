@@ -1,1 +1,32 @@
-// Reverse Words in a String : USE ISTRINGSTREAM METHOD\n\nstring result(string s)\n{\n    int left = 0;\n    int right = s.length()-1;\n\n    string temp="";\n    string ans="";\n\n    *//Iterate the string and keep on adding to form a word*\n    *//If empty space is encountered then add the current word to the result*\n    while (left <= right) {\n   char ch= s[left];\n   if (ch != ' ') {\n       temp += ch;\n   } else if (ch == ' ') {\n       if (ans!="") ans = temp + " " + ans;\n       else ans = temp;\n       temp = "";\n   }\n   left++;\n    }\n\n    *//If not empty string then add to the result(Last word is added)*\n    if (temp!="") {\n   if (ans!="") ans = temp + " " + ans;\n   else ans = temp;\n    }\n\n    return ans;\n}
+// Reverse Words in a String : USE ISTRINGSTREAM METHOD
+
+string result(string s)
+{
+    int left = 0;
+    int right = s.length()-1;
+
+    string temp="";
+    string ans="";
+
+    *//Iterate the string and keep on adding to form a word*
+    *//If empty space is encountered then add the current word to the result*
+    while (left <= right) {
+   char ch= s[left];
+   if (ch != ' ') {
+       temp += ch;
+   } else if (ch == ' ') {
+       if (ans!="") ans = temp + " " + ans;
+       else ans = temp;
+       temp = "";
+   }
+   left++;
+    }
+
+    *//If not empty string then add to the result(Last word is added)*
+    if (temp!="") {
+   if (ans!="") ans = temp + " " + ans;
+   else ans = temp;
+    }
+
+    return ans;
+}

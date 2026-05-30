@@ -1,1 +1,3 @@
-# Catalog:\n\n[https://codeforces.com/catalog](https://codeforces.com/catalog)
+# Catalog:
+
+[https://codeforces.com/catalog](https://codeforces.com/catalog)

@@ -1,1 +1,25 @@
-// ISOMORPHIC STRINGS : NN\n\nbool isIsomorphic(string s, string t) {\n    int n1 = s.length();\n    int n2 = t.length();\n\n    if(n1 != n2)\n   return false;\n\n    unordered_map<char, char> StoT;\n    unordered_map<char, char> TtoS;\n\n    for(int i = 0; i<n1; i++)\n    {\n   char chs = s[i];\n   char cht = t[i];\n   if(StoT.find(chs) != StoT.end() && StoT[chs] != cht)\n       return false;\n   if(TtoS.find(cht) != StoT.end() &&  TtoS[cht] != chs)\n       return false;\n   StoT[s[i]] = t[i];\n   TtoS[t[i]] = s[i];\n    }\n    return true;\n}
+// ISOMORPHIC STRINGS : NN
+
+bool isIsomorphic(string s, string t) {
+    int n1 = s.length();
+    int n2 = t.length();
+
+    if(n1 != n2)
+   return false;
+
+    unordered_map<char, char> StoT;
+    unordered_map<char, char> TtoS;
+
+    for(int i = 0; i<n1; i++)
+    {
+   char chs = s[i];
+   char cht = t[i];
+   if(StoT.find(chs) != StoT.end() && StoT[chs] != cht)
+       return false;
+   if(TtoS.find(cht) != StoT.end() &&  TtoS[cht] != chs)
+       return false;
+   StoT[s[i]] = t[i];
+   TtoS[t[i]] = s[i];
+    }
+    return true;
+}

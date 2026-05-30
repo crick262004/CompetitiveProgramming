@@ -1,1 +1,15 @@
-// isPalindrome : Keep\n\n    bool isPalindrome(string s) {\n   int l = 0;\n   int r = s.length() -1;\n\n   while(l<r)\n   {\n       if( s[l] != s[r] )\n           return false;\n       l++;\n       r--;\n   }\n   return true;\n    }
+// isPalindrome : Keep
+
+    bool isPalindrome(string s) {
+   int l = 0;
+   int r = s.length() -1;
+
+   while(l<r)
+   {
+       if( s[l] != s[r] )
+           return false;
+       l++;
+       r--;
+   }
+   return true;
+    }

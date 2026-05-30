@@ -1,1 +1,25 @@
-// ANAGRAM : NN\n\nbool isAnagram(string s, string t) {\n    int n = s.length();\n    int m = t.length();\n\n    if(m!= n)\n   return false;\n\n    unordered_map <char, int> m1;\n    // unordered_map <char, int> m2;\n\n    for(int i =0; i<n; i++)\n    {\n   m1[s[i]] ++;\n   m1[t[i]] --;\n    }\n\n    for(int i = 0; i<n; i++)\n    {\n   if(m1[s[i]] != 0)\n       return false;\n    }\n    return true;\n}
+// ANAGRAM : NN
+
+bool isAnagram(string s, string t) {
+    int n = s.length();
+    int m = t.length();
+
+    if(m!= n)
+   return false;
+
+    unordered_map <char, int> m1;
+    // unordered_map <char, int> m2;
+
+    for(int i =0; i<n; i++)
+    {
+   m1[s[i]] ++;
+   m1[t[i]] --;
+    }
+
+    for(int i = 0; i<n; i++)
+    {
+   if(m1[s[i]] != 0)
+       return false;
+    }
+    return true;
+}

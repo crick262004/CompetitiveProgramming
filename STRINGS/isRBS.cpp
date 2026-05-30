@@ -1,1 +1,13 @@
-// isRBS : Keep\n\nauto check = `[](const string& s)` {\n    int bal = 0;\n    for (char c : s) {\n if (c == '(') ++bal;\n if (c == ')') --bal;\n if (bal < 0) return false;\n    }\n    return bal == 0;\n <span style="font-family: .AppleSystemUIFont; font-size: 13.0;">\n##   };\n </span>
+// isRBS : Keep
+
+auto check = `[](const string& s)` {
+    int bal = 0;
+    for (char c : s) {
+ if (c == '(') ++bal;
+ if (c == ')') --bal;
+ if (bal < 0) return false;
+    }
+    return bal == 0;
+ <span style="font-family: .AppleSystemUIFont; font-size: 13.0;">
+##   };
+ </span>

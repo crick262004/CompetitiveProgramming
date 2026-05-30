@@ -1,1 +1,35 @@
-// Count Substrings with K Distinct : Put it in common Idea of SW, not…\n\n <span style="font-size: 22.0;">\n**Count Substrings with K Distinct : Put it in common Idea of SW, not here**\n\n </span>\n <span style="font-size: 17.0;">\nint util(string s, int k){\n    if(k<= 0)\n   return 0;\n    int l = 0;\n    int r = 0;\n    int cnt = 0;\n    map<char, int> mp;\n    int n = s.length();\n    for(int r = 0; r<n; r++){\n   char ch = s[r];\n   mp[ch]++;\n   while(l<=r && mp.size() > k){\n       char c = s[l];\n       if(mp[c] == 1)\n           mp.erase(c);\n       else\n           mp[c]--;\n       l++;\n   }\n   cnt += (r-l+1);\n    }\n    return cnt;\n}\nint countSubstr(string& s, int k) {\n    // code here.\n    return util(s, k) - util(s, k-1);\n}\n </span>
+// Count Substrings with K Distinct : Put it in common Idea of SW, not…
+
+ <span style="font-size: 22.0;">
+**Count Substrings with K Distinct : Put it in common Idea of SW, not here**
+
+ </span>
+ <span style="font-size: 17.0;">
+int util(string s, int k){
+    if(k<= 0)
+   return 0;
+    int l = 0;
+    int r = 0;
+    int cnt = 0;
+    map<char, int> mp;
+    int n = s.length();
+    for(int r = 0; r<n; r++){
+   char ch = s[r];
+   mp[ch]++;
+   while(l<=r && mp.size() > k){
+       char c = s[l];
+       if(mp[c] == 1)
+           mp.erase(c);
+       else
+           mp[c]--;
+       l++;
+   }
+   cnt += (r-l+1);
+    }
+    return cnt;
+}
+int countSubstr(string& s, int k) {
+    // code here.
+    return util(s, k) - util(s, k-1);
+}
+ </span>
