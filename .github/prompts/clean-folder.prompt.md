@@ -13,8 +13,11 @@ You are tasked to clean up and push a subfolder in the Competitive Programming w
 
 Follow these strict rules based on our previous cleanups:
 
-1. **Analyze Folder**: Check the contents of the specified folder using terminal or workspace tools. Look specifically for `.md` files, `images/`, and `attachments/`.
-2. **Clean Markdown Files & Clumped Entities**: Ensure no strange HTML tags (like `<span style="...">` or inline CSS) are left from exports. Convert them to standard Markdown. Fix heading structures if they just awkwardly duplicate the file name, and explicitly remove trailing empty headers (like `# ` lines with nothing else).
+1. **Use Existing Scripts**: **DO NOT** write or run new ad-hoc Python scripts, and **DO NOT** write ad-hoc `sed`/`awk` bash regex like `<[^>]+>` to parse or clean files (as they historically destroy C++ template parameters like `<int>`). Instead, you MUST reuse the safe, battle-tested existing scripts in the workspace root whenever possible: `strip_html.py`, `strip_trailing.py`, `fix_greedy.py`, and `fix_spans.py`. Review what they do before running them.
+
+
+2. **Analyze Folder**: Check the contents of the specified folder using terminal or workspace tools. Look specifically for `.md` files, `images/`, and `attachments/`.
+3. **Clean Markdown Files & Clumped Entities**: Ensure no strange HTML tags (like `<span style="...">` or inline CSS) are left from exports. Convert them to standard Markdown. Fix heading structures if they just awkwardly duplicate the file name, and explicitly remove trailing empty headers (like `# ` lines with nothing else).
    - **Fix heavily indented and spaced elements**: Markdown might contain elements like `     # [URL](...)` or `     CODE:`. Remove the excessive leading spaces so they are flush with the left margin. Standardize awkward titles like `CODE:` or `THEORY:` to normal markdown headers (`## CODE`, `## THEORY`).
    - **Fix Displaced Code Comments**: Sometimes single-line C++ comments (e.g. `// ...`) are violently broken apart from their associated code, placing them 1-2 empty lines below the line of code they describe (like `int x = 5;\n\n // some comment`). Use regex or string matching to pull these floating `//` comments back onto the same line as the preceding code. **CRITICAL PRECAUTION**: ONLY do this if the preceding line is ACTUAL code ending in `;` or `{`. NEVER pull a comment up if the preceding line is ALREADY a comment (starts with `//`), as this will viciously corrupt multi-line commented code blocks.
    - **Handle Extreme Splitting inside Code**: Some C++ declarations might be randomly split across lines (e.g. `const \n\n int mod = 1e9 + 7;`). Make sure to merge them into valid single-line declarations (`const int mod = 1e9 + 7;`).
@@ -23,19 +26,19 @@ Follow these strict rules based on our previous cleanups:
    - **Remove Stray Indentation**: Remove awkward leading spaces (e.g., 4 or 5 spaces) before normal text and markdown links that accidentally cause Markdown to parse them as preformatted code blocks. Look out for C++ lambdas formatted as `[int a, int b](...)` that were accidentally parsed as broken Markdown links, and wrap them in backticks (\`).
    - **CRITICAL - Preserve Code Indentation**: While removing stray spaces from text, **DO NOT strip the internal indentation (tabs or 4 spaces)** from within actual C++ code blocks. Code must remain indented to reflect normal C++ nesting. If code lost its indentation during export, you MUST restore logical C++ indentation before saving the code block.
 
-3. **Handle Empty/Stub Files**: Identify files that are completely empty. Only delete files if they are strictly empty. Do not delete small files (like Catalog pages) just because they have few characters.
-4. **Fix Unfenced & Highlighted Raw Code Exports**: Note-taking apps often export C++ code completely without markdown code blocks, leaving bare code sitting in the file. Look for typical C++ keywords (like `#include`, `using namespace`, `const int`, `vector<`, `struct`, `for (int`) that are floating in the markdown without fences.
+4. **Handle Empty/Stub Files**: Identify files that are completely empty. Only delete files if they are strictly empty. Do not delete small files (like Catalog pages) just because they have few characters.
+5. **Fix Unfenced & Highlighted Raw Code Exports**: Note-taking apps often export C++ code completely without markdown code blocks, leaving bare code sitting in the file. Look for typical C++ keywords (like `#include`, `using namespace`, `const int`, `vector<`, `struct`, `for (int`) that are floating in the markdown without fences.
    - You **MUST** explicitly wrap ALL of this raw C++ code inside proper `cpp ... ` fences.
    - If the code was exported as literal Markdown bold/italics (e.g., `**struct**`, `***Matrix***`, `*const*`), actively strip out all the Markdown text formatting (asterisks, underscores) from the raw code.
    - Remove trailing formatting from comments (like `// some comment *` -> `// some comment`).
    - Fix the indentation and merge fragmented blocks together into a cohesive fenced C++ block. Ensure normal nesting (e.g., inside loops, ifs, functions) is correctly indented using 4 spaces.
 
-5. **Convert to C++ Files where Appropriate**: If a markdown file (or its contents after cleanup) predominantly just contains a heading and a single block of C++ code, you MUST rename the `.md` file to a `.cpp` file. Move the heading block to the top of the file as a single-line comment (e.g. `// Topic Title`). **Crucial**: Strip the Markdown code fences (``cpp` and ``) completely from `.cpp` files to avoid compilation errors. Delete the old `.md` file when done.
-6. **Clean Images**: Very carefully verify that every single image in `images/` is referenced in the markdown files. Be aware of the Global vs Local Images Context: explicitly check both the local `images/` directory and root `images/` directory for references, as the workspace structure may vary. Delete any unused or dangling images to save space.
-7. **Clean Attachments**: Check `attachments/`. If it is empty or the files are unused, delete the folder/files.
-8. **Rename Files**: If the user's instructions specify, or if file names are overly long/messy (like standard export artifacts), rename them to concise, readable names. **Crucial**: Ensure any internal links to images remain perfectly valid if you alter files.
-9. **Ignore OS Artifacts**: Delete any `.DS_Store` files before committing, as these macOS artifacts tend to sneak into folders.
-10. **Git Operations**:
+6. **Convert to C++ Files where Appropriate**: If a markdown file (or its contents after cleanup) predominantly just contains a heading and a single block of C++ code, you MUST rename the `.md` file to a `.cpp` file. Move the heading block to the top of the file as a single-line comment (e.g. `// Topic Title`). **Crucial**: Strip the Markdown code fences (``cpp` and ``) completely from `.cpp` files to avoid compilation errors. Delete the old `.md` file when done.
+7. **Clean Images**: Very carefully verify that every single image in `images/` is referenced in the markdown files. Be aware of the Global vs Local Images Context: explicitly check both the local `images/` directory and root `images/` directory for references, as the workspace structure may vary. Delete any unused or dangling images to save space.
+8. **Clean Attachments**: Check `attachments/`. If it is empty or the files are unused, delete the folder/files.
+9. **Rename Files**: If the user's instructions specify, or if file names are overly long/messy (like standard export artifacts), rename them to concise, readable names. **Crucial**: Ensure any internal links to images remain perfectly valid if you alter files.
+10. **Ignore OS Artifacts**: Delete any `.DS_Store` files before committing, as these macOS artifacts tend to sneak into folders.
+11. **Git Operations**:
     - Stage the specific folder only: `git add "<folder>"`
     - Commit with a meaningful message: `git commit -m "Clean up and add <folder> notes"`
     - Push to the remote: `git push`
