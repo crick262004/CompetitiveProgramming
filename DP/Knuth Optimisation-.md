@@ -1,0 +1,2 @@
+# Knuth Optimisation:
+

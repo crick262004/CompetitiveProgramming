@@ -6,43 +6,43 @@
 // (which would be s*s)
 // we push top sum(n-1, n-1),
 // now run a loop(for s times) where we
-//  pop top sum 
+//  pop top sum
 // and then push in usse corresponding next 2 possible values.
 // that would be i+1, j and i, j+1
 
-// now just to make sure we dont add values multiple times, we also create a 
+// now just to make sure we dont add values multiple times, we also create a
 // visit set for [i][j].
 
- 
-vector<int> KMaxCombinations(vector<int>& A,vector<int>& B, int K)
+vector<int> KMaxCombinations(vector<int> &A, vector<int> &B, int K)
 {
     // sort both arrays A and B
     sort(A.begin(), A.end());
     sort(B.begin(), B.end());
-    vector<int>ans;
+    vector<int> ans;
     int N = A.size();
 
     // Max heap which contains tuple of the format
     // (sum, (i, j)) i and j are the indices
     // of the elements from array A
     // and array B which make up the sum.
-    priority_queue<pair<int, pair<int, int> > > pq;
+    priority_queue<pair<int, pair<int, int>>> pq;
 
     // my_set is used to store the indices of
     // the  pair(i, j) we use my_set to make sure
     // the indices doe not repeat inside max heap.
-    set<pair<int, int> > my_set;  // initialize the heap with the maximum sum
+    set<pair<int, int>> my_set; // initialize the heap with the maximum sum
     // combination ie (A[N - 1] + B[N - 1])
     // and also push indices (N - 1, N - 1) along
     // with sum.
     pq.push(make_pair(A[N - 1] + B[N - 1],
-                      make_pair(N-1, N-1)));
+                      make_pair(N - 1, N - 1)));
 
     my_set.insert(make_pair(N - 1, N - 1));
 
     // iterate upto K
-    for (int count=0; count<K; count++) {  // tuple format (sum, (i, j)).
-        pair<int, pair<int, int> > temp = pq.top();
+    for (int count = 0; count < K; count++)
+    { // tuple format (sum, (i, j)).
+        pair<int, pair<int, int>> temp = pq.top();
         pq.pop();
 
         ans.push_back(temp.first);
@@ -50,7 +50,7 @@ vector<int> KMaxCombinations(vector<int>& A,vector<int>& B, int K)
         int i = temp.second.first;
         int j = temp.second.second;
 
-        if(i-1>=0)
+        if (i - 1 >= 0)
         {
             int sum = A[i - 1] + B[j];
 
@@ -62,7 +62,8 @@ vector<int> KMaxCombinations(vector<int>& A,vector<int>& B, int K)
             // not already present inside the map i.e.
             // no repeating pair should be present inside
             // the heap.
-            if (my_set.find(temp1) == my_set.end()) {
+            if (my_set.find(temp1) == my_set.end())
+            {
                 pq.push(make_pair(sum, temp1));
                 my_set.insert(temp1);
             }
@@ -70,14 +71,15 @@ vector<int> KMaxCombinations(vector<int>& A,vector<int>& B, int K)
 
         // insert (A[i] + B[j - 1], (i, j - 1))
         // into max heap
-        if(j-1>=0)
+        if (j - 1 >= 0)
         {
             int sum = A[i] + B[j - 1];
-            pair<int,int>temp1 = make_pair(i, j - 1);
+            pair<int, int> temp1 = make_pair(i, j - 1);
 
             // insert only if the pair (i, j - 1)
             // is not present inside the heap.
-            if (my_set.find(temp1) == my_set.end()) {
+            if (my_set.find(temp1) == my_set.end())
+            {
                 pq.push(make_pair(sum, temp1));
                 my_set.insert(temp1);
             }

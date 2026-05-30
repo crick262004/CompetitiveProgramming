@@ -1,0 +1,47 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Git Push Task",
+			"type": "shell",
+			"command": "python3 /Users/arnavgupta/CompetitiveProgramming/git_push_script.py",
+			"isBackground": false
+		},
+		{
+			"label": "Cleanup Task",
+			"type": "shell",
+			"command": "python3 -c \"import os; os.remove('/Users/arnavgupta/CompetitiveProgramming/fft_fix.py'); os.remove('/Users/arnavgupta/CompetitiveProgramming/git_push_script.py')\"",
+			"isBackground": false
+		},
+		{
+			"label": "Fix 2-SAT and Git Push",
+			"type": "shell",
+			"command": "python3 /Users/arnavgupta/CompetitiveProgramming/fix_2sat.py && git add \"Linear Algebra/2-SAT.md\" && git commit -m \"Fix 2-SAT.md formatting based on updated prompt rules\" && git push",
+			"isBackground": false
+		},
+		{
+			"label": "Run Fix 2-SAT",
+			"type": "shell",
+			"command": "python3 /Users/arnavgupta/CompetitiveProgramming/do_fix_2sat.py",
+			"isBackground": false
+		},
+		{
+			"label": "Run fixes",
+			"type": "shell",
+			"command": "python3 patch_prompt.py && python3 fix_gauss.py && git add \"Linear Algebra/Gaussian Elimination.md\" .github/prompts/clean-folder.prompt.md && git commit -m \"Fix Gaussian Elimination and Update Prompt\" && git push",
+			"isBackground": false
+		},
+		{
+			"label": "Run Fix BS",
+			"type": "shell",
+			"command": "python3 /Users/arnavgupta/CompetitiveProgramming/do_fix_bs.py && rmdir BS/attachments",
+			"isBackground": false
+		},
+		{
+			"label": "Git Push BS",
+			"type": "shell",
+			"command": "git add BS && git commit -m \"Clean up and fix BS folder format\" && git push",
+			"isBackground": false
+		}
+	]
+}
