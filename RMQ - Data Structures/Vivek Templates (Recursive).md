@@ -33,7 +33,7 @@ struct *LazySegTree*{
             t[id].val = (r - l + 1)*t[id].lazy; *// apply*
             if(l != r){ *// propagate the lazy*
                 t[id<<1].lazy = t[id].lazy;
-                t[id<<1|1].lazy = t[id].lazy;
+                t[((id<<1) | 1)].lazy = t[id].lazy;
             }
             t[id].lazy = 0;
         }
@@ -231,7 +231,7 @@ void push(int id, int l, int r){
     if(t[id].lazy_add==0 && t[id].lazy_set==0)return;
     if(l!=r){
         push_down(id,(id<<1));
-        push_down(id,(id<<1|1));
+        push_down(id,((id<<1) | 1));
     }
     if(t[id].lazy_add!=0){
         t[id].sum += (r-l+1)*t[id].lazy_add;
@@ -247,7 +247,7 @@ void push(int id, int l, int r){
 *//         t[id].sum += (r - l + 1)*t[id].lazy;*
 *//         if(l != r){*
 *//             t[id<<1].lazy += t[id].lazy;*
-*//             t[id<<1|1].lazy += t[id].lazy;*
+*//             t[((id<<1) | 1)].lazy += t[id].lazy;*
 *//         }*
 *//         t[id].lazy = 0;*
 *//     }*

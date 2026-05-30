@@ -38,7 +38,7 @@ for(int mask=0; mask<N; ++mask){
     // iterate through non-empty submasks of rem
     for(int sub = rem; sub; sub = (sub-1) & rem){
         // front transition from dp[mask] to dp[nmask], where sub is the extra part that adds to mask, to make nmask
-        int nmask = mask | sub;
+        int nmask = (mask | sub);
     }
 }
 ```
