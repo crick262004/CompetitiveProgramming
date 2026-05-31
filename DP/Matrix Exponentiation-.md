@@ -124,11 +124,14 @@ int main() {
 
 If the single matrix is populated in the opposite direction, the logic is reversed: `a[i][j]` becomes the contribution from `i` to `j`.
 
+{If you use the directed adjacency matrix (storing nodes you have an out-edge to), then the logic is reverse, and in that case, a[i][j] is contribution from i to j }
+
 ![6A742F7A-591A-4A5F-A4BC-D2D1786B5AF2](images/6A742F7A-591A-4A5F-A4BC-D2D1786B5AF2.png)
 ![FF32CB37-8096-423C-9656-416E6E35F03F](images/FF32CB37-8096-423C-9656-416E6E35F03F.png)
 ![8F221793-953A-44BF-89DC-803E3A213703](images/8F221793-953A-44BF-89DC-803E3A213703.png)
 
 ## Constant Space DP Intuition
+tool to speed up the dp with constant space
 The variables that we need to store are the same variables we would need to calculate DP in `O(N)` time and `O(1)` space.
 The single column vector becomes all these variables.
 
