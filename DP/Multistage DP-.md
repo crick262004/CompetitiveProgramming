@@ -1,14 +1,11 @@
 # Multistage DP:
 
- 
-     Problem has a handful of distinct, disjoint, sequential modes/stages.
-When problem has stages and 1-directional branching bw stages.
-We keep the stage_cnt/ stage_index as a parameter of the dp
+Problem has a handful of distinct, disjoint, sequential modes or stages.
+When a problem has stages and one-directional branching between stages, we keep `stage_cnt` or `stage_index` as a DP parameter.
 Thus,
-  
-      **dp[index][stage] : arr[0…index] has been resolved, and we are at stage stage rn.**
-  
-     
+
+`dp[index][stage]`: `arr[0…index]` has been resolved, and we are at stage `stage` right now.
+
 Example: create exactly K non-empty, disjoint subarrays s.t. sum of all is max
 (2k+1 disjoint stages)
 

@@ -1,22 +1,15 @@
 # Probability DP problems.
 
- 
-     **Probability DP problems.
-In probability DP problems, we usually use back transitions but they might seem like front transitions.(BASE CASE IS KINDA AT THE TOP)
-Set the value of the DP states as exactly what is asked in the problem. (the thing that each DP cell is storing)
-Base case is the state where you know the probability of the answer trivially(usually 1 or 0 is this trivial probability)
-(EACH DP STATE CELL IS STORING THE PROB. OF THE FINAL ANWER, GIVEN THE CONDNS AS SPECIFIED BY THAT STATE CELL PARAMS)
-Transitions are based on going from P(ans/A) -> SIGMA_OVER_ALL_Bi ([P(ans/A&B1) * P(B1)])
-and usually another layer of max/min over the different choices we could have(The Bi’s come once we pick a choice)
-THE DP STATES ARE LIKE EVENTS (OF PROBABILITY THEORY)
-So events become states, and probabilites become transition edges. 
-AND WE USE TOTAL PROBABILITY THEOREM.**
+Probability DP problems:
+In probability DP problems, we usually use back transitions even though they may look like front transitions. The base case is often near the top.
+Set the value of the DP states to exactly what is asked in the problem, since each DP cell stores that probability directly.
+The base case is the state where the answer is trivially known, usually `1` or `0`.
+Each DP state stores the probability of the final answer given the conditions specified by that state.
+Transitions are based on `P(ans/A) -> sum over Bi [P(ans/A&B1) * P(B1)]`, often with an extra max/min over choices.
+The DP states are like events in probability theory: events become states, and probabilities become transition edges.
+We use the total probability theorem.
 
- 
- 
-     **Probability DP : 
-dp[…..] = “ prob. of exactly whats asked in qn”
-Now, if we combine this with using Form1, 
-the transitions completely align with 
-Total Probability Theorem.**
+Probability DP:
+`dp[...] = probability of exactly what's asked in the question`.
+With that formulation, the transitions align cleanly with the total probability theorem.
  
