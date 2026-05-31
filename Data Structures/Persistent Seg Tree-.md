@@ -4,7 +4,10 @@
      **Persistent Seg Tree:
 1.gemini**
 
- </span>#include <bits/stdc++.h>
+</span>
+
+```cpp
+#include <bits/stdc++.h>
 
 *// Use long long for sums to avoid overflow*
 using *ll* = long long;
@@ -115,12 +118,13 @@ int main() {
 
     return 0;
 }
-
-
+```
 
  <span style="font-size: 43.0;">
      **2.CSES**
  </span>
+
+```cpp
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -200,3 +204,4 @@ int main() {
         }
     }
 }
+```

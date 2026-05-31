@@ -7,7 +7,9 @@
  </span> <span style="font-size: 35.0;">
      # **Lazy set, Node Sum Segment Tree**
 
+```cpp
  </span>
+```cpp
 *vi* a(N, 0);
 struct *node*{
     int lazy;
@@ -100,6 +102,10 @@ void solve(){
         }
     }
 }
+
+```
+
+```
 
 
  <span style="font-size: 35.0;">

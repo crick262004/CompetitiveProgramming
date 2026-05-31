@@ -1,6 +1,6 @@
 # Fenwick tree / BIT
 
-
+```cpp
 struct *BIT* {
     int n; vector<int> ft;
     BIT(int n=0): n(n), ft(n+1,0) {}
@@ -117,3 +117,5 @@ struct *FenwickTreeOneBasedIndexing* {
             bit[idx] += delta;
     }
 };
+```
+

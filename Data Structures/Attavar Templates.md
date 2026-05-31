@@ -8,6 +8,7 @@
      # **Internally, the seg tree is 1-based 
 That is, the seg and lazy array**
  </span>
+```cpp
 // *1D point update and range query where \texttt{cmb} is* ** any associative operation.*
 template<typename *T*> struct SegTree { *// cmb(ID,b) = b*
     *T* ID; *// the default value*
@@ -45,7 +46,8 @@ template<typename *T*> struct SegTree { *// cmb(ID,b) = b*
     */// }*
 };
 # usage : 
-    SegTree<int> st1(n, 1e18, [](int a, int b){ *// pa - a*
+```cpp
+SegTree<int> st1(n, 1e18, [](int a, int b){ *// pa - a*
         return min(a, b);
     });
     f(i,n){
@@ -53,8 +55,10 @@ template<typename *T*> struct SegTree { *// cmb(ID,b) = b*
     }
 st1.upd(k, x);
 st1.query(0 ,k-1)
+```
 
 # usage with custome node struct:
+```cpp
 struct *node*{
     int open = 0, closed = 0, val = 0;
 };
@@ -91,9 +95,12 @@ void solve(){
 
 }
 
+```
+
  <span style="font-size: 43.0;">
      # **Seg Tree Recursive:**
  </span>
+```cpp
 template<typename T, int SZ> struct SegTree {
 	vector<T> seg; T id;
 	T (*cmb) (T, T);
@@ -116,10 +123,13 @@ template<typename T, int SZ> struct SegTree {
 	}
 };
 
+```
+
  <span style="font-size: 43.0;">
      # **Lazy Seg Tree: Kinda recursive**
  </span>
- ** Description: 1D range increment and sum query.*
+```cpp
+** Description: 1D range increment and sum query.*
     ** https://codeforces.com/blog/entry/82400*
 #pragma once
 
@@ -182,3 +192,5 @@ template<class *T*, class *U*, int SZ> struct LazySeg { *// SZ must be power of 
         lst.seg[i + (1<<20)] = psum;
     }
     lst.build();
+
+```

@@ -1,7 +1,7 @@
 # 2-D SegTree:
 
- <span style="font-size: 20.0;">
-     vector<vector<int>> a(N, vector<int>(N));
+```cpp
+vector<vector<int>> a(N, vector<int>(N));
 vector<vector<int>> t(4 * N + 1, vector<int>(4 * N + 1));
 
 //a[n][m] is the given array
@@ -111,5 +111,6 @@ int32_t main() {
 		}
 	}
 }
- </span>
+```
+
 ![11C8C257-B7B2-49A6-BA9D-B6D9E3098164](images/11C8C257-B7B2-49A6-BA9D-B6D9E3098164.png)

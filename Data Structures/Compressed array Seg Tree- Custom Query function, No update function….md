@@ -15,6 +15,7 @@
 Build the seg tree where each node stores a vector representation of the range it covers. This can work if no update functions and if we build the query function such that it doesn’t need to do the actual merging, and calulculates the answer just by looking at the O(logn) nodes for its range, and doing some fast caluclation per node(O(logN) or O(1) )
  </span>
 # 
+```cpp
 struct *node*{
     *// acc to qn*
 };
@@ -68,9 +69,11 @@ void solve(){
         cout << res << endl;
     }
 }
+```
 
 
 # ![315E69FF-9B8D-4604-905B-FF10FC9E3ED3](images/315E69FF-9B8D-4604-905B-FF10FC9E3ED3.png)
+```cpp
 // solving:
 struct node{
     vector<int> fixed;
@@ -145,10 +148,12 @@ void solve(){
     }
  
 }
+```
 
 ![7FCB4A8A-78D2-4A92-84B3-4B9C87D50654](images/7FCB4A8A-78D2-4A92-84B3-4B9C87D50654.png)
 
 ![57CF5D81-1FB1-4B6C-A06B-24D69A1A9EC2](images/57CF5D81-1FB1-4B6C-A06B-24D69A1A9EC2.png)
+```cpp
 #include <bits/stdc++.h>
 #include <bits/extc++.h>
 using namespace std;
@@ -232,6 +237,7 @@ int32_t main() {
 		print(res);
 	}
 }
+```
 
 
 ![8C4F4ED2-A9FB-4DAA-A0CC-46C5CDA6AF48](images/8C4F4ED2-A9FB-4DAA-A0CC-46C5CDA6AF48.png)
