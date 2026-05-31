@@ -1,4 +1,4 @@
-# Fenwick Tree / BIT
+# Fenwick tree / BIT
 
 
 struct *BIT* {
