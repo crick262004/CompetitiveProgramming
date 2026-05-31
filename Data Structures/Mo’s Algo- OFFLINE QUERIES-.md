@@ -89,6 +89,25 @@ void solve(){
         cout << it << endl;
     }
 }
+
+// cin >> n >> q;
+// f(i,n) cin >> a[i];
+
+// // coordinate compression
+// vector<int> vals(a, a+n);
+// sort(vals.begin(), vals.end());
+// vals.erase(unique(vals.begin(), vals.end()), vals.end());
+// f(i,n) a[i] = lower_bound(vals.begin(), vals.end(), a[i]) - vals.begin() + 1;
+
+// // block_size = max(1, (int)(n / sqrt(q)));
+// vector<Query> queries; queries.reserve(q);
+// f(i,q) {
+//     int l, r; cin >> l >> r;
+//     l--; r--;
+//     queries.push_back({l, r, i});
+// }
+// auto ans = mo_s_algorithm(queries);
+// for (int x : ans) cout << x << '\n';
 ```
 
 ![4133EF52-8F24-40E0-B86F-12B2D3F7AB3E](images/4133EF52-8F24-40E0-B86F-12B2D3F7AB3E.png)
