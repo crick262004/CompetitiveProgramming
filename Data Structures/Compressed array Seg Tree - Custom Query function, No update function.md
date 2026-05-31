@@ -1,8 +1,9 @@
 # Compressed array Seg Tree: Custom Query function, No update function. Each node stores compressed subarray of range it corresponds to
 
 different kind of seg tree problem. Custom Query function, No update function.
+
+
 Build the seg tree where each node stores a vector representation of the range it covers. This can work if no update functions and if we build the query function such that it doesn’t need to do the actual merging, and calulculates the answer just by looking at the O(logn) nodes for its range, and doing some fast caluclation per node(O(logN) or O(1) ). 
-With appropiate name of file
 
 
 ```cpp
