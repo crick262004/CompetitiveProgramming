@@ -8,6 +8,7 @@ CREATE APPROPRIATE BUFFERS ON LEFT AND RIGHT SO THAT THE POP LAST LOGIC WORKS.
 
 
 # MCM:
+```cpp
 class Solution {
   public:
     int matrixMultiplication(vector<int> &arr) {
@@ -30,8 +31,9 @@ class Solution {
         return dp[0][n-1];
     }
 };
+```
 
-
+```cpp
 class Solution {
   public:
     // int util(vector<int> &arr, int l , int r,
@@ -91,10 +93,12 @@ class Solution {
         return dp[0][n-1];
     }
 };
+```
 
 
 # BALLOONS / PARTITION
 
+```cpp
 class Solution {
 public:
     int maxCoins(vector<int>& nums) {
@@ -123,9 +127,9 @@ public:
         return dp[0][n-1];
     }
 };
+```
 
-
-
+```cpp
 class Solution {
 public:
     // int util(vector<int>& nums, int l, int r, vector<vector<int>>& dp){
@@ -191,12 +195,15 @@ public:
         return dp[0][size-1];
     }
 };
+```
+
 
 # FRONT PARTITION : 
 # when the dp state can be just 1 parameter: 
 # when we can create partitions from 1 end, while knowing that the partitions are independent. 
 # 2D LR DP is required when partitions are interdependent.
 
+```cpp
 int maxSumAfterPartitioning(vector<int>& arr, int k) {
         int n = arr.size();
         vector<int> dp(n, 0);
@@ -219,7 +226,9 @@ int maxSumAfterPartitioning(vector<int>& arr, int k) {
         }
         return dp[n-1];
     }
+```
 
+```cpp
 class Solution {
 public:
     int minCut(string s) {
@@ -249,3 +258,4 @@ public:
         return dp[0]-1;
     }
 };
+```
