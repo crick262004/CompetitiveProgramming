@@ -21,70 +21,7 @@ struct LazySegTree{
 
     node merge(node a, node b){
         node ans;
-        ans.val = a.val + b.val; // acc to qn
-        return ans;
-    }
-
-    void push(int id, int l, int r){ // acc to qn
-        if(t[id].lazy != 0){
-            t[id].val = (r - l + 1)*t[id].lazy; // apply
-            if(l != r){ // propagate the lazy
-                t[id<<1].lazy = t[id].lazy;
-                t[id<<1|1].lazy = t[id].lazy;
-            }
-            t[id].lazy = 0;
-        }
-    }
-
-    void build(int id, int l, int r){
-        if(l == r){
-            t[id].val = a[l]; // acc to qn
-            t[id].lazy = 0; // acc to qn
-            return;
-        }
-        int mid = (l+r)/2;
-        build(2*id,l,mid);
-        build(2*id+1, mid+1, r);
-        t[id] = merge(t[2*id], t[2*id+1]);
-    }
-
-    void update(int id, int l, int r, int lq, int rq, int val){
-        push(id, l, r);
-        if(lq > r || rq < l) return;
-        if(lq <= l && r <= rq){
-            t[id].lazy = val; // acc to qn
-            push(id, l, r);
-            return;
-        }
-        int mid = (l + r)/2;
-        update(2*id, l, mid, lq, rq, val);
-        update(2*id + 1, mid + 1, r,lq, rq, val);
-        t[id] = merge(t[2*id], t[2*id + 1]);
-    }
-
-    node query(int id, int l, int r, int lq, int rq){
-        push(id, l, r);
-        if(lq > r || l > rq){
-            return node(); 
-        }
-        if(lq <= l && r <= rq){
-            return t[id]; // acc to qn
-        }
-        int mid = (l + r)/2;
-        return merge(query(2*id, l, mid , lq, rq),query(2*id + 1, mid + 1, r, lq, rq));
-    }
-};
 ```
-
-## Sum Segment Tree
-
-```cpp
-vi a(N);
-struct node{
-    int val = 0; // acc. to qn
-    node(){
-        val = 0;  // acc. to qn
-    }
 };
 struct SegTree{
     int SZ;
