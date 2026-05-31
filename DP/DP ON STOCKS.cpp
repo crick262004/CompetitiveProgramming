@@ -17,6 +17,21 @@ public:
                     // Sell state.
                     cur[state] = max(next[state], next[state + 1] + prices[index]);
                 }
+                // alternative expanded cases (kept as comments for clarity):
+                // if(state == 0)
+                //     cur[state] =  max(next[state] , 
+                //                 next[state+1] 
+                //                 - prices[index]);
+                // else if(state == 1)
+                //     cur[state] =  max( next[state] , 
+                //                 next[state+1] + prices[index]);   
+                // else if(state == 2)
+                //     cur[state] =  max(next[state] , 
+                //                 next[state+1] 
+                //                 - prices[index]);
+                // else// state = 3
+                //     cur[state] =  max( next[state] , 
+                //                 prices[index]);
             }
             next = cur;
         }
