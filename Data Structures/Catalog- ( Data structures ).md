@@ -1,3 +1,3 @@
 # Catalog: ( Data structures )
 
-https://codeforces.com/catalog
+[Codeforces catalog](https://codeforces.com/catalog)
