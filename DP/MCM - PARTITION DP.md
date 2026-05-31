@@ -192,7 +192,6 @@ public:
     }
 };
 
-# 
 # FRONT PARTITION : 
 # when the dp state can be just 1 parameter: 
 # when we can create partitions from 1 end, while knowing that the partitions are independent. 

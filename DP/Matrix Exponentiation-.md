@@ -1,17 +1,17 @@
 # Matrix Exponentiation:
 
- <span style="font-size: 43.0;">
-     # **[https://www.youtube.com/watch?v=kQuCOFzWoa0](https://www.youtube.com/watch?v=kQuCOFzWoa0)**
- </span>
- <span style="font-size: 43.0;">
-     # **[https://www.youtube.com/watch?v=RA_SpxP2t54](https://www.youtube.com/watch?v=RA_SpxP2t54)**
- </span> <span style="font-size: 43.0;">
+ 
+# **[https://www.youtube.com/watch?v=kQuCOFzWoa0](https://www.youtube.com/watch?v=kQuCOFzWoa0)**
+ 
+ 
+# **[https://www.youtube.com/watch?v=RA_SpxP2t54](https://www.youtube.com/watch?v=RA_SpxP2t54)**
+  
      
 **CODE: (Make sure to use Column vector standard)**
- </span>
- <span style="font-size: 36.0;">
-     # **Faster when number of variables is small**
- </span>
+ 
+ 
+# **Faster when number of variables is small**
+ 
 # #include <bits/stdc++.h>
 # using namespace std;
 # #define REP(i,n) for(int i = 0; i < (n); i++)
@@ -50,9 +50,9 @@
 #     cout << total.a[1][0] << endl;
 # }
 
- <span style="font-size: 36.0;">
-     # **When number of variables is large (generalised)**
- </span>
+ 
+# **When number of variables is large (generalised)**
+ 
 #include <bits/stdc++.h>
 # using namespace std;
 # #define REP(i,n) for(int i = 0; i < (n); i++)
@@ -104,66 +104,57 @@
 #     }
 #     cout << sum << "\n";
 # }
-# 
- <span style="font-family: .AppleSystemUIFont; font-size: 33.0;">
-     # 
+ 
 
- </span> <span style="font-size: 42.0;">
-     # **THEORY:
+  
+# **THEORY:
 a[i][j] of matrix to power k => contribution to state variable i from state variable j over K length path.** 
 
- </span> <span style="font-size: 42.0;">
-     # **(If single matrix is populated in similar way)
+  
+# **(If single matrix is populated in similar way)
 {If you use the directed adjacency matrix (storing nodes you have an out-edge to), then the logic is reverse, and in that case, a[i][j] is contribution from i to j }**
- </span>
+ 
 # ![6A742F7A-591A-4A5F-A4BC-D2D1786B5AF2](images/6A742F7A-591A-4A5F-A4BC-D2D1786B5AF2.png)
 # ![FF32CB37-8096-423C-9656-416E6E35F03F](images/FF32CB37-8096-423C-9656-416E6E35F03F.png)
 # ![8F221793-953A-44BF-89DC-803E3A213703](images/8F221793-953A-44BF-89DC-803E3A213703.png)
- <span style="font-family: .AppleSystemUIFont; font-size: 31.0;">
-     # tool to speed up the dp with constant space
+ 
+# tool to speed up the dp with constant space
 
- </span> <span style="font-family: .AppleSystemUIFont; font-size: 31.0;">
-     # 
+  
 The variables that we need to store are all the variables that we would’ve needed to use to calculate dp in O(N) time and O(1) space.
 
- </span> <span style="font-family: .AppleSystemUIFont; font-size: 31.0;">
+  
      The single column vector becomes all these variables.
 
- </span>![D20264FD-CF7C-45AF-AEA7-3D53C290EB63](images/D20264FD-CF7C-45AF-AEA7-3D53C290EB63.png)
+![D20264FD-CF7C-45AF-AEA7-3D53C290EB63](images/D20264FD-CF7C-45AF-AEA7-3D53C290EB63.png)
 ![52C098E7-D68A-4326-8B76-ED13BFC0DA41](images/52C098E7-D68A-4326-8B76-ED13BFC0DA41.png)
- <span style="font-size: 43.0;">
-     # **[https://codeforces.com/blog/entry/80195](https://codeforces.com/blog/entry/80195)**
- </span>
+ 
+# **[https://codeforces.com/blog/entry/80195](https://codeforces.com/blog/entry/80195)**
+ 
 
- <span style="font-size: 43.0;">
+ 
      **Can be done on any Small space DP, where the function is associative:**
 
- </span> <span style="font-size: 25.0;">
-     [https://codeforces.com/gym/102644/problem/F](https://codeforces.com/gym/102644/problem/F)
- </span>
+  
+[https://codeforces.com/gym/102644/problem/F](https://codeforces.com/gym/102644/problem/F)
 ![017A691D-0515-4D82-AA60-EC880ACB18D3](images/017A691D-0515-4D82-AA60-EC880ACB18D3.png)
- <span style="font-size: 43.0;">
+ 
      **This, above, is an example of function being min, which is associative (min over sum of different paths)**
 
- </span>
- <span style="font-size: 43.0;">
+ 
+ 
      **Good problem to understand how to fit some dps into the matrix multiplication format:**
 
- </span>![02EB700F-0E3C-4B07-B21A-ED9B1E76CDF2](images/02EB700F-0E3C-4B07-B21A-ED9B1E76CDF2.png)
-
-
-
-
-
+![02EB700F-0E3C-4B07-B21A-ED9B1E76CDF2](images/02EB700F-0E3C-4B07-B21A-ED9B1E76CDF2.png)
 ![AC101508-7D68-46A6-8C4E-F055A899A035](images/AC101508-7D68-46A6-8C4E-F055A899A035.png)
 ![FD5692F5-79F4-42A2-9CA9-B9618D339944](images/FD5692F5-79F4-42A2-9CA9-B9618D339944.png)
 
 
- <span style="font-size: 33.0;">
-     # **Really Good for Learning about a trick ( converting exactly K to atmost K) and about Matrix Multiplication. ( can watch errichto video on matrix Exponentiation )**
+ 
+# **Really Good for Learning about a trick ( converting exactly K to atmost K) and about Matrix Multiplication. ( can watch errichto video on matrix Exponentiation )**
 
- </span> <span style="font-size: 33.0;">
+  
      **The trick is to have an extra node, and have all nodes have an edge to this special node ( even special node has an edge to special node ). And now find for paths of len K+1, to this special node.**
- </span>
+ 
 ![82BE2F0C-916E-48EF-9DA7-BFF3BAEF850F](images/82BE2F0C-916E-48EF-9DA7-BFF3BAEF850F.png)
 ![3800D3F2-6B76-4F84-AC5F-0B4567B682BB](images/3800D3F2-6B76-4F84-AC5F-0B4567B682BB.png)

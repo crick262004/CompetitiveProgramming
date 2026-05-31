@@ -1,29 +1,29 @@
 # SUBSETS (TAKE/NOT-TAKE)
 
 
- <span style="font-size: 32.0;">
-     # **SUBSETS SUM = TARGET**
+ 
+# **SUBSETS SUM = TARGET**
 
- </span> <span style="font-size: 27.0;">
+  
      **(take / not-take recursion problems ka DP template) 
 (BASICALLY, ANY PROBLEM ON SUBSETS / SUBSEQUENCES)
 Also has the Knapsack problems since those are also Take/Not-take.**
 
- </span>![B950F11C-1E92-4D8B-AD0A-2D5C0F7F23D4](images/B950F11C-1E92-4D8B-AD0A-2D5C0F7F23D4.png)
+![B950F11C-1E92-4D8B-AD0A-2D5C0F7F23D4](images/B950F11C-1E92-4D8B-AD0A-2D5C0F7F23D4.png)
 
- <span style="font-size: 27.0;">
+ 
      **PROPER TABULATION:**
- </span>
+ 
 ![E23D42E3-1C8B-4495-8904-875E61B89F3D](images/E23D42E3-1C8B-4495-8904-875E61B89F3D.png)
- <span style="font-size: 27.0;">
+ 
      
 **TABULATION SPACE OPTIMISED:**
- </span>
+ 
 ![A9FA3AF5-A868-45DA-91D8-D16514EB5935](images/A9FA3AF5-A868-45DA-91D8-D16514EB5935.png)
 
- <span style="font-size: 27.0;">
+ 
      **COUNTING VARIATION:**
- </span>
+ 
 ![5FC0BFF8-23A9-47F9-82FA-89C83B24730C](images/5FC0BFF8-23A9-47F9-82FA-89C83B24730C.png)
 class Solution {
   public:
@@ -48,10 +48,10 @@ class Solution {
 
 
 
- <span style="font-size: 32.0;">
-     # **UNDERLYING RECURSION**
+ 
+# **UNDERLYING RECURSION**
 
- </span>*// Function to check if there is a subset of 'arr' with a sum equal to 'target'*
+ *// Function to check if there is a subset of 'arr' with a sum equal to 'target'*
 bool subsetSumUtil(int ind, int target, vector<int>& arr, vector<vector<int>>& dp) {
     *// If the target sum is 0, we have found a subset*
     **if (target == 0)
@@ -86,9 +86,9 @@ bool subsetSumToK(int n, int k, vector<int>& arr) {
     return subsetSumUtil(n - 1, k, arr, dp);
 }
 
- <span style="font-size: 32.0;">
-     # **EXAMPLE OF INF SUPPLY:**
- </span>
+ 
+# **EXAMPLE OF INF SUPPLY:**
+ 
 ![66B56FCB-BC22-4BA6-92DB-2403CFC1604C](images/66B56FCB-BC22-4BA6-92DB-2403CFC1604C.png)
 class Solution {
 public:
@@ -142,17 +142,16 @@ public:
     }
 };
 
- <span style="font-size: 32.0;">
-     # **UNBOUNDED KNAPSACK(ANOTHER EXAMPLE OF INF SUPPLY)**
- </span>
+ 
+# **UNBOUNDED KNAPSACK(ANOTHER EXAMPLE OF INF SUPPLY)**
+ 
 ![E7EE5CDC-2436-4A26-9DEA-9017FF13B6B3](images/E7EE5CDC-2436-4A26-9DEA-9017FF13B6B3.png)
- <span style="font-size: 32.0;">
-     # 
+ 
 
- </span> <span style="font-size: 32.0;">
-     # **BOUNDED KNAPSACK:**
+  
+# **BOUNDED KNAPSACK:**
 
- </span>int knapSack(int capacity, vector<int> *&*val, vector<int> *&*wt) {
+ int knapSack(int capacity, vector<int> *&*val, vector<int> *&*wt) {
     vector<int> dp(capacity + 1, 0);
     int n = wt.size();
     for(int t = wt[0]; t<= capacity; t++)
@@ -169,9 +168,9 @@ public:
 
 
 
- <span style="font-size: 32.0;">
-     # **Subset Sum, retrieving a valid subset:**
- </span>
+ 
+# **Subset Sum, retrieving a valid subset:**
+ 
     *vi* first(70000+1, -1);
     bitset<70000+1> dp;
     dp[0] = 1;

@@ -1,6 +1,6 @@
 # Probability DP problems.
 
- <span style="font-size: 31.0;">
+ 
      **Probability DP problems.
 In probability DP problems, we usually use back transitions but they might seem like front transitions.(BASE CASE IS KINDA AT THE TOP)
 Set the value of the DP states as exactly what is asked in the problem. (the thing that each DP cell is storing)
@@ -12,11 +12,11 @@ THE DP STATES ARE LIKE EVENTS (OF PROBABILITY THEORY)
 So events become states, and probabilites become transition edges. 
 AND WE USE TOTAL PROBABILITY THEOREM.**
 
- </span>
- <span style="font-size: 33.0;">
+ 
+ 
      **Probability DP : 
 dp[…..] = “ prob. of exactly whats asked in qn”
 Now, if we combine this with using Form1, 
 the transitions completely align with 
 Total Probability Theorem.**
- </span>
+ 

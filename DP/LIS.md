@@ -1,8 +1,8 @@
 # LIS
 
-# 
-# The Binary Search approach : ( OPTIMISED FROM N^2 TO NLOGN)
+## The Binary Search approach (optimised from $N^2$ to $N\log N$)
 # Longest Strictly increasing:
+```cpp
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
@@ -23,8 +23,10 @@ public:
         return temp.size();
     }
 };
+```
 # Longest increasing & Equal:
-int lis(vector<int>*&* nums) {
+```cpp
+int lis(vector<int>& nums) {
     int n = nums.size();
     vector<int> temp;
     temp.push_back(nums[0]);
@@ -41,8 +43,9 @@ int lis(vector<int>*&* nums) {
     }
     return temp.size();
 }
+```
 
-
+```cpp
 int lengthOfLIS(vector<int>& nums) {
         int n = nums.size();
         vector<int> dp(n, 1);
@@ -57,8 +60,9 @@ int lengthOfLIS(vector<int>& nums) {
             ans = max(ans, dp[i]);
         return ans;
     }
+```
 
-
+```cpp
 class Solution {
   public:
     vector<int> longestIncreasingSubsequence(int n, vector<int>& arr) {
@@ -67,7 +71,7 @@ class Solution {
         vector<int> hash(n);
         for(int i = 0; i<n; i++)
             hash[i] = i;
-        
+
         vector<int> ans;
         int ansInd = 0;
         int maxi = 1;
@@ -85,7 +89,7 @@ class Solution {
             {
                 maxi = dp[i];
                 ansInd = i;
-            } 
+            }
         }
         while(hash[ansInd] != ansInd)
         {
@@ -97,3 +101,4 @@ class Solution {
         return ans;
     }
 };
+```
