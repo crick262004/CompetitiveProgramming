@@ -20,6 +20,7 @@ TABULATION SPACE OPTIMISED:
 COUNTING VARIATION:
  
 ![5FC0BFF8-23A9-47F9-82FA-89C83B24730C](images/5FC0BFF8-23A9-47F9-82FA-89C83B24730C.png)
+```cpp
 class Solution {
   public:
     int perfectSum(vector<int>& nums, int target) {
@@ -40,6 +41,7 @@ class Solution {
         return dp[target];
     }
 };
+```
 
 
 
@@ -85,6 +87,7 @@ bool subsetSumToK(int n, int k, vector<int>& arr) {
 EXAMPLE OF INF SUPPLY:
  
 ![66B56FCB-BC22-4BA6-92DB-2403CFC1604C](images/66B56FCB-BC22-4BA6-92DB-2403CFC1604C.png)
+```cpp
 class Solution {
 public:
     // int util(int amount, int index, vector<int>& coins,vector<vector<int>>& dp )
@@ -136,6 +139,7 @@ public:
         // return prev[amount];
     }
 };
+```
 
 UNBOUNDED KNAPSACK (ANOTHER EXAMPLE OF INF SUPPLY)
  
@@ -144,7 +148,8 @@ UNBOUNDED KNAPSACK (ANOTHER EXAMPLE OF INF SUPPLY)
 
 BOUNDED KNAPSACK:
 
- int knapSack(int capacity, vector<int> *&*val, vector<int> *&*wt) {
+```cpp
+int knapSack(int capacity, vector<int>& val, vector<int>& wt) {
     vector<int> dp(capacity + 1, 0);
     int n = wt.size();
     for(int t = wt[0]; t<= capacity; t++)
@@ -156,6 +161,7 @@ BOUNDED KNAPSACK:
     }
     return dp[capacity];
 }
+```
 ![E08A7262-B76E-402D-99D8-C87B55FA6886](images/E08A7262-B76E-402D-99D8-C87B55FA6886.png)
 
 
@@ -163,17 +169,19 @@ BOUNDED KNAPSACK:
 
 Subset Sum, retrieving a valid subset:
  
-    *vi* first(70000+1, -1);
-    bitset<70000+1> dp;
-    dp[0] = 1;
-    f(i,n){
-        int val = temp[i].ff;
-        bitset<70000+1> ndp;
-        ndp = dp | (dp<<val);
-        bitset<70000+1> mask = ndp ^ dp;
-        for(int j = mask._Find_first(); j<mask.size(); j= mask._Find_next(j)){
-            first[j] = i;
-        }
-        dp = ndp;
+```cpp
+*vi* first(70000+1, -1);
+bitset<70000+1> dp;
+dp[0] = 1;
+f(i,n){
+    int val = temp[i].ff;
+    bitset<70000+1> ndp;
+    ndp = dp | (dp<<val);
+    bitset<70000+1> mask = ndp ^ dp;
+    for(int j = mask._Find_first(); j<mask.size(); j= mask._Find_next(j)){
+        first[j] = i;
     }
+    dp = ndp;
+}
+```
 
