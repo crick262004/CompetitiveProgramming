@@ -1,37 +1,28 @@
 # Persistent Seg Tree:
 
- <span style="font-size: 43.0;">
-     **Persistent Seg Tree:
-1.gemini**
-
-</span>
+## 1. Versioned pointer-based tree
 
 ```cpp
 #include <bits/stdc++.h>
+using namespace std;
 
-*// Use long long for sums to avoid overflow*
-using *ll* = long long;
+using ll = long long;
 
-*// Represents a node in the segment tree*
-struct *Node* {
-    *Node* *left = nullptr, *right = nullptr;
-    *ll* sum = 0;
+struct Node {
+    Node *left = nullptr, *right = nullptr;
+    ll sum = 0;
 };
 
-*// Store all nodes in a vector to avoid slow dynamic allocation*
-std::vector<*Node*> node_pool;
+vector<Node> node_pool;
 int node_idx = 0;
+vector<Node *> roots;
 
-*Node** new_node() {
+Node *new_node() {
     return &node_pool[node_idx++];
 }
 
-*// Roots of all arrays (versions)*
-std::vector<*Node**> roots;
-
-*// Build the initial segment tree*
-*Node** build(*const* std::vector<int>*&* arr, int tl, int tr) {
-    *Node** v = new_node();
+Node *build(const vector<int> &arr, int tl, int tr) {
+    Node *v = new_node();
     if (tl == tr) {
         v->sum = arr[tl];
     } else {
@@ -43,20 +34,17 @@ std::vector<*Node**> roots;
     return v;
 }
 
-*// Persistent update: returns the root of the new version*
-*Node** update(*Node** prev_v, int tl, int tr, int pos, int new_val) {
-    *Node** v = new_node();
-    *v = *prev_v; *// Copy data from the previous version's node*
+Node *update(Node *prev_v, int tl, int tr, int pos, int new_val) {
+    Node *v = new_node();
+    *v = *prev_v;
 
     if (tl == tr) {
         v->sum = new_val;
     } else {
         int tm = tl + (tr - tl) / 2;
         if (pos <= tm) {
-            *// Path goes left, create a new left child*
             v->left = update(prev_v->left, tl, tm, pos, new_val);
         } else {
-            *// Path goes right, create a new right child*
             v->right = update(prev_v->right, tm + 1, tr, pos, new_val);
         }
         v->sum = v->left->sum + v->right->sum;
@@ -64,54 +52,41 @@ std::vector<*Node**> roots;
     return v;
 }
 
-*// Standard range sum query*
-*ll* query_sum(*Node** v, int tl, int tr, int l, int r) {
-    if (l > r) {
-        return 0;
-    }
-    if (l == tl && r == tr) {
-        return v->sum;
-    }
+ll query_sum(Node *v, int tl, int tr, int l, int r) {
+    if (l > r) return 0;
+    if (l == tl && r == tr) return v->sum;
     int tm = tl + (tr - tl) / 2;
-    return query_sum(v->left, tl, tm, l, std::min(r, tm)) +
-           query_sum(v->right, tm + 1, tr, std::max(l, tm + 1), r);
+    return query_sum(v->left, tl, tm, l, min(r, tm)) +
+           query_sum(v->right, tm + 1, tr, max(l, tm + 1), r);
 }
 
 int main() {
-    std::*ios_base*::sync_with_stdio(false);
-    std::cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     int n, q;
-    std::cin >> n >> q;
+    cin >> n >> q;
 
-    std::vector<int> initial_arr(n);
-    for (int i = 0; i < n; ++i) {
-        std::cin >> initial_arr[i];
-    }
-    
-    *// Pre-allocate memory for all nodes*
-    *// Initial build: O(2n) nodes. Each query: O(log n) nodes.*
+    vector<int> initial_arr(n);
+    for (int i = 0; i < n; ++i) cin >> initial_arr[i];
+
     node_pool.resize(2 * n + q * (log2(n) + 4));
-
-    *// Build the first version*
     roots.push_back(build(initial_arr, 0, n - 1));
 
     for (int i = 0; i < q; ++i) {
         int type;
-        std::cin >> type;
+        cin >> type;
         if (type == 1) {
             int k, a, x;
-            std::cin >> k >> a >> x;
-            *// Update creates a new root which replaces the old one*
+            cin >> k >> a >> x;
             roots[k - 1] = update(roots[k - 1], 0, n - 1, a - 1, x);
         } else if (type == 2) {
             int k, a, b;
-            std::cin >> k >> a >> b;
-            std::cout << query_sum(roots[k - 1], 0, n - 1, a - 1, b - 1) << "\n";
-        } else { *// type == 3*
+            cin >> k >> a >> b;
+            cout << query_sum(roots[k - 1], 0, n - 1, a - 1, b - 1) << '\n';
+        } else {
             int k;
-            std::cin >> k;
-            *// Copy is just adding the pointer to the root*
+            cin >> k;
             roots.push_back(roots[k - 1]);
         }
     }
@@ -120,9 +95,7 @@ int main() {
 }
 ```
 
- <span style="font-size: 43.0;">
-     **2.CSES**
- </span>
+## 2. CSES
 
 ```cpp
 #include <iostream>
@@ -135,8 +108,6 @@ struct Node {
     ll sum;
 };
 
-// Builds a segment tree from vector v.
-// Returns a pointer to the constructed tree.
 Node *build(int l, int r, vector<int> &v) {
     Node *p = new Node();
     if (r - l == 1) {
@@ -150,8 +121,6 @@ Node *build(int l, int r, vector<int> &v) {
     return p;
 }
 
-// Changes value in position k to x in tree p.
-// Returns a pointer to the new tree.
 Node *change(Node *p, int l, int r, int k, int x) {
     Node *n = new Node(*p);
     if (r - l == 1) {
@@ -168,7 +137,6 @@ Node *change(Node *p, int l, int r, int k, int x) {
     return n;
 }
 
-// Returns the sum of values in range [ql, qr).
 ll query(Node *p, int l, int r, int ql, int qr) {
     if (qr <= l || r <= ql) return 0;
     if (ql <= l && r <= qr) return p->sum;
@@ -181,9 +149,7 @@ int main() {
     cin >> n >> q;
 
     vector<int> v(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> v[i];
-    }
+    for (int i = 0; i < n; ++i) cin >> v[i];
 
     vector<Node *> trees{build(0, n, v)};
 
