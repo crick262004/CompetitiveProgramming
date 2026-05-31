@@ -1,4 +1,4 @@
-# SPARSE TABLE: (sid calls this RMQ)
+# Sparse table: (sid calls this RMQ)
 
 
 
