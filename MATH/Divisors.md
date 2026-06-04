@@ -4,26 +4,28 @@
      For finding divisors from 1 to N : normally would take O(nrootn) but there is a way to do O(n logn) by going the other way around(calculating the factors)
 
  </span>![B299E28D-F396-438E-86A5-D3F055CA5526](images/B299E28D-F396-438E-86A5-D3F055CA5526.png)
-*vi* divs[N+1];
-
+ 
+```cpp
+    vi divs[N+1];
     for(int i = 1; i<=N; i++){
         for(int j = i; j<=N; j+= i){
             divs[j].pb(i);
         }
     }
-
+```
 
 
 # Calculating all Divisors of a number through its prime factorisation, which in-turn can be calculated using sieve quickly.
 ![5CE9BBFB-ED66-4DD0-B1A8-1F6F7E8D8883](images/5CE9BBFB-ED66-4DD0-B1A8-1F6F7E8D8883.png)
-*const* int N = 1e7 + 5;
+```cpp
+const int N = 1e7 + 5;
 int spf[N];
 
 void sieve() {
     for (int i = 1; i < N; i++) spf[i] = i;
     
     for (int i = 2; i * i < N; i++) {
-        if (spf[i] == i) { *// i is prime*
+        if (spf[i] == i) { // i is prime
             for (int j = i * i; j < N; j += i) {
                 if (spf[j] == j) {
                     spf[j] = i;
@@ -49,7 +51,7 @@ vector<int> get_divisors(int n) {
 
     vector<int> divisors;
     
-    auto dfs = `[&](auto self, int idx, int current_divisor)` -> void {
+    auto dfs = [&](auto self, int idx, int current_divisor) -> void {
         if (idx == prime_factors.size()) {
             divisors.push_back(current_divisor);
             return;
@@ -63,12 +65,12 @@ vector<int> get_divisors(int n) {
         }
     };
     dfs(dfs, 0, 1);
-    *// Optional: Sort if required (DFS does not guarantee order)*
+    // Optional: Sort if required (DFS does not guarantee order)
     sort(divisors.begin(), divisors.end());
     return divisors;
 }
 
-
+```
 
 
 
@@ -76,6 +78,7 @@ vector<int> get_divisors(int n) {
 
 
 # Print All Divisors
+```cpp
 vector<int> findDivisors(int n) {
     vector<int> divisors; 
 
@@ -91,10 +94,11 @@ vector<int> findDivisors(int n) {
     sort(divisors.begin(), divisors.end());
     return divisors; 
 }
-
+```
 
 # Num of Divisors
 ![66F9FEDE-5BEC-4BBE-9224-D4BD2D63E982](images/66F9FEDE-5BEC-4BBE-9224-D4BD2D63E982.png)
+```cpp
 long long numberOfDivisors(long long num) {
     long long total = 1;
     for (int i = 2; (long long)i * i <= num; i++) {
@@ -112,10 +116,11 @@ long long numberOfDivisors(long long num) {
     }
     return total;
 }
-
+```
 
 # Sum of Divisors
 ![CD90FFF5-8156-4ADB-90ED-AFED823497AA](images/CD90FFF5-8156-4ADB-90ED-AFED823497AA.png)
+```cpp
 long long SumOfDivisors(long long num) {
     long long total = 1;
 
@@ -140,5 +145,6 @@ long long SumOfDivisors(long long num) {
     }
     return total;
 }
+```
 
 ![47D9E374-E531-465D-8EF6-E195B2973A72](images/47D9E374-E531-465D-8EF6-E195B2973A72.png)
