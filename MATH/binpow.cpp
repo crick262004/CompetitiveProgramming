@@ -1,6 +1,4 @@
-# BINPOW ITERATIVE : KEEP
-
-
+// iterative
 int binpow(int a, int b)
 {
     int res = 1;
