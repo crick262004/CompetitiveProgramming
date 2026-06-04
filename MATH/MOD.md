@@ -1,6 +1,6 @@
 # MOD
 
-
+``` cpp
 void modadd(int &a , int b) {a=((a%MOD)+(b%MOD))%MOD;}
 void modsub(int &a , int b) {a=((a%MOD)-(b%MOD)+MOD)%MOD;}
 void modmul(int &a , int b) {a=((a%MOD)*(b%MOD))%MOD;}
@@ -28,9 +28,9 @@ int divmod(int a, int b, int c)
 {
     return ((a % c) * inversemod(b, c)) % c;
 }
-
+```
 ![E782F8D3-9B5C-44CB-BD37-7A6EE469D305](images/E782F8D3-9B5C-44CB-BD37-7A6EE469D305.png)
-
+```cpp
 int factmod(int n, int p) {
     vector<int> fa(n+1);
     fa[0] = 1;
@@ -55,6 +55,6 @@ int factmod(int n, int p) {
     }
     return res;
 }
-
+```
 ![57FE1818-08C5-492B-BB32-872E9B5ECA6E](images/57FE1818-08C5-492B-BB32-872E9B5ECA6E.png)
 ![480AF871-150E-41BF-A1DA-930B42FDBBF1](images/480AF871-150E-41BF-A1DA-930B42FDBBF1.png)
