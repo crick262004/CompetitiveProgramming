@@ -2,6 +2,7 @@
 
 # ![820F9B57-F146-4FEC-B957-7DE36B745736](images/820F9B57-F146-4FEC-B957-7DE36B745736.png)
 ![3B8C61F3-3375-438F-AF8A-1B65B7D62835](images/3B8C61F3-3375-438F-AF8A-1B65B7D62835.png)
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -100,3 +101,4 @@ int main() {
     int v = 3;
     cout << seg.query_point(intime[v]) << "\n";
 }
+```
