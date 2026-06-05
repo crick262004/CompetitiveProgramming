@@ -1,16 +1,14 @@
-# “flow upto LCA” application:
+// “flow upto LCA” application:
 
-
-
-*vi* adjL[N];
-*vi* depth(N);
+vi adjL[N];
+vi depth(N);
 int maxExponent = log2(N) + 1;
-*vvi* binaryParent(N, *vi* (maxExponent + 1, -1));
-*vvi* flow(N, *vi*(maxExponent + 1, 1e18));
-map<*pi*, int> weights;
+vvi binaryParent(N, vi (maxExponent + 1, -1));
+vvi flow(N, vi(maxExponent + 1, 1e18));
+map<pi, int> weights;
 
 void dfs(int cur, int par, int d){
-    *// vis[cur] = 1;*
+    // vis[cur] = 1;
     depth[cur] = d;
     binaryParent[cur][0] = par;
     if(par != -1)
@@ -26,10 +24,10 @@ ll flowUptoLCA(ll a, ll b){
     ll ans = 1e18;
     if(depth[a] < depth[b])
         swap(a, b);
-    *// a is the higher node always*
+    // a is the higher node always
 
     ll d = depth[a] - depth[b];
-    *// binary lifting to same level*
+    // binary lifting to same level
     while(d>0){
         ll jump = log2(d);
         ans = min(ans, flow[a][jump]);
@@ -63,10 +61,10 @@ void solve(){
         weights[{v,u}] = w;
     }
  
-    *// dfs to set parents and depth.*
+    // dfs to set parents and depth.
     dfs(1, -1, 0); 
 
-    *// creating the binaryParents matrix and flowUptoBinaryParent matrix*
+    // creating the binaryParents matrix and flowUptoBinaryParent matrix
     for(int jumpExponent = 1; jumpExponent<=maxExponent; jumpExponent++){
         for(int node = 1; node<=n; node++){
             if(binaryParent[node][jumpExponent-1] != -1){
@@ -78,7 +76,7 @@ void solve(){
         }
     }
 
-    *// queries, applying the flow upto LCA part:*
+    // queries, applying the flow upto LCA part:
     ll q;
     cin >> q;
     f(i, q){
