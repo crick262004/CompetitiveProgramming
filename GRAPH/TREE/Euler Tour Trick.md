@@ -1,10 +1,10 @@
 # Euler Tour Trick
 
- <span style="font-size: 42.0;">
-     # **Each subtree = Contiguous range of array
-Tree Flattening** 
+# Each subtree = Contiguous range of array
 
- </span>*vector<int> intime, outtime, euler;
+Tree Flattening 
+```cpp
+vector<int> intime, outtime, euler;
 int timer = 0;
 
 void dfs(int u, int p, const vector<vector<int>>& adj) {
@@ -25,7 +25,8 @@ void build_euler(int n, int root, const vector<vector<int>>& adj) {
     euler.assign(n, -1);
     timer = 0;
     dfs(root, -1, adj);
-}*
+}
+```
 
 ![29236886-8400-49EC-8952-97A0FCA772AD](images/29236886-8400-49EC-8952-97A0FCA772AD.png)
 # ![BC7870D4-42E2-4D28-BB52-286FD217E922](images/BC7870D4-42E2-4D28-BB52-286FD217E922.png)
