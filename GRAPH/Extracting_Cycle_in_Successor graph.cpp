@@ -1,4 +1,4 @@
-# Extracting Cycle in Successor graph
+// Extracting Cycle in Successor graph
 
 
 vector <int> extract_cycle(int x) {

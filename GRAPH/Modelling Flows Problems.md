@@ -9,9 +9,5 @@
 ![AC156E81-673D-46C8-BFD4-A93C87BE9308](images/AC156E81-673D-46C8-BFD4-A93C87BE9308.png)
 
 
- <span style="font-size: 33.0;">
-     # **Really good MCMF problem:**
-
- </span> <span style="font-size: 33.0;">
-     # **[https://gemini.google.com/app/5da6a42b22a2c276](https://gemini.google.com/app/5da6a42b22a2c276)**
- </span>
+# **Really good MCMF problem:**
+[https://gemini.google.com/app/5da6a42b22a2c276](https://gemini.google.com/app/5da6a42b22a2c276)

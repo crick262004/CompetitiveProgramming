@@ -1,14 +1,18 @@
-# MCMF: Min Cost Max Flow: Shows up in a lot of grid problems, where…
+# MCMF: Min Cost Max Flow
 
-# MCMF: Min Cost Max Flow:
-Shows up in a lot of grid problems, where you connect row nodes to col nodes.
+Shows up in a lot of grid problems, where you connect row nodes to col nodes. It represents the cost per unit flow.
 
-It is cost per unit flow
-# ![131867F3-34BD-49E8-B57A-3C4147210E23](images/131867F3-34BD-49E8-B57A-3C4147210E23.png)
+![131867F3-34BD-49E8-B57A-3C4147210E23](images/131867F3-34BD-49E8-B57A-3C4147210E23.png)
 
-# The kactl one: ( With Gemini Cleaning ) 
-Handles reverse edges and multiple edges
-# ![6F0D3935-5C67-4B2B-9041-A05254E74FB9](images/6F0D3935-5C67-4B2B-9041-A05254E74FB9.png)
+---
+
+## The Kactl Implementation (With Gemini Cleaning)
+
+Handles reverse edges and multiple edges.
+
+![6F0D3935-5C67-4B2B-9041-A05254E74FB9](images/6F0D3935-5C67-4B2B-9041-A05254E74FB9.png)
+
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -137,15 +141,22 @@ int main() {
     }
     return 0;
 }
+```
 
+---
 
+## CP-Algorithms Implementation
 
-# The CP ALGOS ones won’t work for multiple edges and reverse edges!
-# **it cannot handle multiple routes between the same cities or routes in opposite directions**
-# ![43C6F5D4-036E-4A5F-BD9A-BA8AB7C13D95](images/43C6F5D4-036E-4A5F-BD9A-BA8AB7C13D95.png)
-[https://cp-algorithms.com/graph/min_cost_flow.html](https://cp-algorithms.com/graph/min_cost_flow.html)
+> [!WARNING]
+> **The CP-Algorithms version won’t work for multiple edges and reverse edges!**
+> It cannot handle multiple routes between the same cities or routes in opposite directions.
 
-# **IF you know the max flow / target Flow:**
+![43C6F5D4-036E-4A5F-BD9A-BA8AB7C13D95](images/43C6F5D4-036E-4A5F-BD9A-BA8AB7C13D95.png)
+Source: [https://cp-algorithms.com/graph/min_cost_flow.html](https://cp-algorithms.com/graph/min_cost_flow.html)
+
+### Variation 1: If you know the max flow / target Flow
+
+```cpp
 struct Edge
 {
     int from, to, capacity, cost;
@@ -225,7 +236,6 @@ int min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
         return cost;
 }
 
-
 void solve() {
     // --- 1. SETUP ---
     int n, m; 
@@ -278,10 +288,11 @@ void solve() {
         // }
     }
 }
+```
 
+### Variation 2: If you don’t know the max flow / target Flow
 
-
-# IF you don’t know the max flow / target Flow:
+```cpp
 // Change return type to pair<int, int>
 pair<int, int> min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
     adj.assign(N, vector<int>());
@@ -327,7 +338,6 @@ pair<int, int> min_cost_flow(int N, vector<Edge> edges, int K, int s, int t) {
     // Instead, return what we achieved:
     return {flow, total_cost};
 }
+```
+
 ![B4343B40-BBE0-4F6F-9630-0464ADBACE6A](images/B4343B40-BBE0-4F6F-9630-0464ADBACE6A.png)
-
-
-

@@ -1,10 +1,8 @@
-# Min Vertex Cover in Bipartite Graph = Maximum Matching in Bipartite…
+# Min Vertex Cover in Bipartite Graph
 
- <span style="font-size: 34.0;">
-     # **Min Vertex Cover in Bipartite Graph
-= Maximum Matching in Bipartite Graph
-Which can be done using Max Flow**
- </span>
+## Min Vertex Cover in Bipartite Graph = Maximum Matching in Bipartite Graph
+**Which can be done using Max Flow**
+
 [https://cses.fi/problemset/task/1709](https://cses.fi/problemset/task/1709)
 ![76E93832-0887-4CCE-8A2F-0973D66467D2](images/76E93832-0887-4CCE-8A2F-0973D66467D2.png)
 ![E446AB39-237C-43F6-8A0B-5E66CA893B87](images/E446AB39-237C-43F6-8A0B-5E66CA893B87.png)

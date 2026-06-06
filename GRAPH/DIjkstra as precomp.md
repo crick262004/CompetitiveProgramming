@@ -1,5 +1,3 @@
-# Dijkstra as precomputation A lot of problems use this  Example:
-
 # Dijkstra as precomputation
 A lot of problems use this
 
