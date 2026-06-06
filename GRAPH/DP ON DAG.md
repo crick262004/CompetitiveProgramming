@@ -1,14 +1,14 @@
 # DP ON DAG
 
- <span style="font-size: 44.0;">
-     # **( just do normal top-down recursion, and memoize it )**
- </span>
+**(just do normal top-down recursion, and memoize it)**
 
-*const* int N = 2e5 + 5; 
-*vi* adjL[N];
-*vi* dp(N);
-*vi* nt(N);
+```cpp
+const int N = 2e5 + 5; 
+vi adjL[N];
+vi dp(N);
+vi nt(N);
 ll n, m;
+
 void dfs(int node){
     if(node == n){
         dp[node] = 1;
@@ -25,6 +25,7 @@ void dfs(int node){
         dp[node] = cnt;
     }
 }
+
 void solve(){
     cin >> n >> m;
     dp.assign(n+1, -1);
@@ -38,16 +39,19 @@ void solve(){
     dfs(1);
     cout << dp[1] << endl;
 }
+```
 
-# Different problem:
+## Different problem:
 
-*const* int N = 2e5 + 5; 
-*vi* adjL[N];
-*vi* dp(N);
-*vi* nt(N);
+```cpp
+const int N = 2e5 + 5; 
+vi adjL[N];
+vi dp(N);
+vi nt(N);
 ll n, m;
+
 void dfs(int node){
-    *// cout << node << endl;*
+    // cout << node << endl;
     if(node == n){
         dp[node] = 1;
         nt[node] = -1;
@@ -67,6 +71,7 @@ void dfs(int node){
         dp[node] = 1 + maxi;
     }
 }
+
 void solve(){
     cin >> n >> m;
     dp.assign(n+1, -1);
@@ -90,3 +95,4 @@ void solve(){
         } cout << endl;
     }
 }
+```

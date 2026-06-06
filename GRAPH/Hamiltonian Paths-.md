@@ -1,18 +1,16 @@
 # Hamiltonian Paths:
 
- <span style="font-size: 35.0;">
-     # **Bitmask DP (optimising from n!n^2 brute force to 2^n * n^2) .** 
+## Bitmask DP (optimizing from n!n^2 brute force to 2^n * n^2).
 
- </span> <span style="font-size: 35.0;">
-     # **We use** 
+**We use:**
+`dp[mask of visited nodes][last visited node]`
 
- </span> <span style="font-size: 32.0;">
-     # **dp[mask of visited nodes] [ last visited node ]**
- </span>
-*const* int N =20; 
-*vi* adjL[N];
-*vvi* dp(N, *vi*((1ll<<N), 0));
+```cpp
+const int N = 20; 
+vi adjL[N];
+vvi dp(N, vi((1ll<<N), 0));
 ll n, m;
+
 void solve(){
     cin >> n >> m;
     f(i,n+1){
@@ -39,16 +37,18 @@ void solve(){
     }
     cout << dp[0][1] << endl;
 }
+```
 
- <span style="font-size: 35.0;">
-     # **optimised: ( slightly, same TC )**
- </span>
-*const* int N =20; 
-*vvi* dp(N, *vi*((1ll<<N), 0));
+## Optimised: (slightly, same TC)
+
+```cpp
+const int N = 20; 
+vvi dp(N, vi((1ll<<N), 0));
 ll n, m;
+
 void solve(){
     cin >> n >> m;
-    *vvi* adjL(n, *vi*(n, 0));
+    vvi adjL(n, vi(n, 0));
     f(i,m){
         ll u, v; cin >> u >> v;
         u--; v--;
@@ -72,6 +72,6 @@ void solve(){
     }
     cout << dp[0][1] << "\n";
 }
-
+```
 
 ![2065E32E-CAE0-41D8-911D-F122B162D378](images/2065E32E-CAE0-41D8-911D-F122B162D378.png)
