@@ -1,13 +1,13 @@
-# ARTICULATION POINTS (undirected connected)
+# Articulation Points (Undirected Connected Graph)
 
-# 
-# **find all the vertices removing which (and edges through it) disconnect the graph into 2 or more components.**
+> **Definition:** Find all the vertices whose removal (along with the edges incident to them) disconnects the graph into two or more connected components.
 
+---
 
- <span style="font-size: 21.0;">
-     **CP ALGO WEBSITE**
+## CP-Algorithms Implementation
 
- </span>int n; // number of nodes
+```cpp
+int n; // number of nodes
 vector<vector<int>> adj; // adjacency list of graph
 
 vector<bool> visited;
@@ -17,7 +17,7 @@ int timer;
 void dfs(int v, int p = -1) {
     visited[v] = true;
     tin[v] = low[v] = timer++;
-    int children=0; // actually this is only_visited_through_root_children
+    int children = 0; // actually this is only_visited_through_root_children
     for (int to : adj[v]) {
         if (to == p) continue;
         if (visited[to]) {
@@ -25,7 +25,7 @@ void dfs(int v, int p = -1) {
         } else {
             dfs(to, v);
             low[v] = min(low[v], low[to]);
-            if (low[to] >= tin[v] && p!=-1)
+            if (low[to] >= tin[v] && p != -1)
                 IS_CUTPOINT(v);
             ++children;
         }
@@ -45,11 +45,10 @@ void find_cutpoints() {
     }
 }
 
+```
 
-
- <span style="font-size: 21.0;">
-     **STRIVER**
- </span>
+## STRIVER 
+```cpp
 class Solution {
 private:
     int timer = 1;
@@ -100,5 +99,6 @@ public:
         return ans;
     }
 };
-![D7FB77EA-0DD4-4583-BE4C-F9F0B1A0C2D8](images/D7FB77EA-0DD4-4583-BE4C-F9F0B1A0C2D8.png)
+```
 
+![D7FB77EA-0DD4-4583-BE4C-F9F0B1A0C2D8](images/D7FB77EA-0DD4-4583-BE4C-F9F0B1A0C2D8.png)

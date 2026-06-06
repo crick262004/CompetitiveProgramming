@@ -1,21 +1,18 @@
-# STRONGLY CONNECTED COMPONENTS
+# Strongly Connected Components (SCC)
 
-DIRECTED GRAPH
+## Directed Graph
 
 Find the number of strongly connected components in the graph.
-A component is called a Strongly Connected Component(SCC) only if for every possible pair of vertices (u, v) inside that component, u is reachable from v and v is reachable from u.
+A component is called a Strongly Connected Component (SCC) only if for every possible pair of vertices $(u, v)$ inside that component, $u$ is reachable from $v$ and $v$ is reachable from $u$.
 
-*const* int N = 2e5 + 5; 
-*vi* adjL[N];
-*vi* vis(N, 0);
-*vi* belongs(N, -1);
+```cpp
+const int N = 2e5 + 5; 
+vi adjL[N];
+vi vis(N, 0);
+vi belongs(N, -1);
 ll n, m;
- <span style="font-size: 20.0;">
-     **void dfs(int node, stack<int>** 
- </span> <span style="font-size: 20.0;">
-     ***&***
- </span> <span style="font-size: 20.0;">
-     **st) {
+
+void dfs(int node, stack<int> &st) {
     vis[node] = 1;
     for (auto it : adjL[node]) {
         if (!vis[it]) {
@@ -24,36 +21,34 @@ ll n, m;
     }
     st.push(node);
 }
-void dfs3(int node, vector<int> adjT[], int ind) {**
 
- </span> <span style="font-size: 20.0;">
-         ***// cout << node << endl;***
- </span> <span style="font-size: 20.0;">
-     
-    **vis[node] = 1;
+void dfs3(int node, vector<int> adjT[], int ind) {
+    // cout << node << endl;
+    vis[node] = 1;
     belongs[node] = ind;
     for (auto it : adjT[node]) {
         if (!vis[it]) {
-            dfs3(it,adjT, ind);
+            dfs3(it, adjT, ind);
         }
     }
-}**
- </span>
+}
+
 void solve(){
     cin >> n >> m;
     belongs.assign(n+1, -1);
     vis.assign(n+1, 0);
     f(i,m){
-        ll u, v; cin >>u >> v;
+        ll u, v; cin >> u >> v;
         adjL[u].pb(v);
     }
- <span style="font-size: 20.0;">
-         **stack<int> st;
-    for (int i = 1; i <=n; i++) {
+
+    stack<int> st;
+    for (int i = 1; i <= n; i++) {
         if (!vis[i]) {
             dfs(i, st);
         }
     }
+
     vector<int> adjT[n+1];
     for (int i = 1; i <= n; i++) {
         vis[i] = 0;
@@ -61,6 +56,7 @@ void solve(){
             adjT[it].push_back(i);
         }
     }
+
     int ind = 0;
     while (!st.empty()) {
         int node = st.top();
@@ -69,21 +65,21 @@ void solve(){
             ind++;
             dfs3(node, adjT, ind);
         }
-    }**
- </span>
+    }
+
     cout << ind << endl;
-    for(int i = 1; i<=n; i++)
+    for(int i = 1; i <= n; i++)
         cout << belongs[i] << " ";
     cout << "\n";
 }
+```
 
 ![C4F98A5B-2015-4FE2-A37F-58CBC41D296D](images/C4F98A5B-2015-4FE2-A37F-58CBC41D296D.png)
 
- <span style="font-size: 33.0;">
-     **SCC compression ( making a DAG ) :** 
+## SCC Compression (making a DAG)
 
- </span>
-void dfs(int node, stack<int> *&*st) {
+```cpp
+void dfs(int node, stack<int> &st) {
     vis[node] = 1;
     for (auto it : adjL[node]) {
         if (!vis[it]) {
@@ -92,7 +88,8 @@ void dfs(int node, stack<int> *&*st) {
     }
     st.push(node);
 }
-void dfs3(int node, int nnode, vector<int> adjT[], vi*&* fn) {
+
+void dfs3(int node, int nnode, vector<int> adjT[], vi &fn) {
     vis[node] = 1;
     if(node != nnode)
         val[nnode] += val[node];
@@ -103,9 +100,10 @@ void dfs3(int node, int nnode, vector<int> adjT[], vi*&* fn) {
     }
     fn[node] = nnode;
 }
+
 void solve(){
     stack<int> st;
-    for (int i = 1; i <=n; i++) {
+    for (int i = 1; i <= n; i++) {
         if (!vis[i]) {
             dfs(i, st);
         }
@@ -128,27 +126,27 @@ void solve(){
             dfs3(node, nnode, adjT, fn);
         }
     }
-    for(int u = 1; u<=n; u++){
+    for(int u = 1; u <= n; u++){
         int nn = fn[u];
         for(auto v : adjL[u]){
-            if( fn[v] != nn){
+            if(fn[v] != nn){
                 adjL[nn].insert(fn[v]);
             }
         }
     }
 }
+```
 
+## Class Template to Convert Graph to DAG
 
- <span style="font-size: 33.0;">
-     **Found a class, to convert graph to DAG.**
- </span>
-class *SCCmaker*
+```cpp
+class SCCmaker
 {
     vector<vector<ll>> DAG;
     vector<ll> info;
     ll number_of_nodes;
 
-    void dfs(ll node, vector<vector<ll>> *&*adj, vector<ll> *&*vis, vector<ll> *&*order)
+    void dfs(ll node, vector<vector<ll>> &adj, vector<ll> &vis, vector<ll> &order)
     {
         vis[node] = 1;
         for (auto &i : adj[node])
@@ -160,7 +158,7 @@ class *SCCmaker*
         }
         order.push_back(node);
     }
-    void dfs2(ll node, vector<vector<ll>> *&*revadj, vector<ll> *&*temp, vector<ll> *&*vis)
+    void dfs2(ll node, vector<vector<ll>> &revadj, vector<ll> &temp, vector<ll> &vis)
     {
         vis[node] = 1;
         temp.push_back(node);
@@ -174,7 +172,7 @@ class *SCCmaker*
     }
 
 public:
-    SCCmaker(vector<vector<ll>> *&*adj, vector<ll> *&*information, ll (*combine)(vector<ll> *&*temp, vector<ll> *&*information), vector<pair<ll, ll>> *&*edges, ll n)
+    SCCmaker(vector<vector<ll>> &adj, vector<ll> &information, ll (*combine)(vector<ll> &temp, vector<ll> &information), vector<pair<ll, ll>> &edges, ll n)
     {
         vector<ll> order;
         vector<ll> vis(n + 1, 0);
@@ -231,15 +229,12 @@ public:
         return number_of_nodes;
     }
 };
+```
 
+## Template Code for SCC Compression (Kosaraju’s Algorithm Modification)
 
-
- <span style="font-size: 33.0;">
-     **Find some template code for SCC compression. A modification to Kosaraju’s Algorithm.
-Currently :** 
-
- </span>
-void dfs(int node, stack<int> *&*st) {
+```cpp
+void dfs(int node, stack<int> &st) {
     vis[node] = 1;
     for (auto it : adjL[node]) {
         if (!vis[it]) {
@@ -248,7 +243,8 @@ void dfs(int node, stack<int> *&*st) {
     }
     st.push(node);
 }
-void dfs3(int node, int nnode, vector<int> adjT[], vi*&* fn) {
+
+void dfs3(int node, int nnode, vector<int> adjT[], vi &fn) {
     vis[node] = 1;
     if(node != nnode)
         val[nnode] += val[node];
@@ -259,9 +255,10 @@ void dfs3(int node, int nnode, vector<int> adjT[], vi*&* fn) {
     }
     fn[node] = nnode;
 }
+
 void solve(){
     stack<int> st;
-    for (int i = 1; i <=n; i++) {
+    for (int i = 1; i <= n; i++) {
         if (!vis[i]) {
             dfs(i, st);
         }
@@ -284,12 +281,13 @@ void solve(){
             dfs3(node, nnode, adjT, fn);
         }
     }
-    for(int u = 1; u<=n; u++){
+    for(int u = 1; u <= n; u++){
         int nn = fn[u];
         for(auto v : adjL[u]){
-            if( fn[v] != nn){
+            if(fn[v] != nn){
                 adjL[nn].insert(fn[v]);
             }
         }
     }
 }
+```

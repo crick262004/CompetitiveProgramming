@@ -1,18 +1,18 @@
-# Eurler Path / Euler Cycle
+# Euler Path / Euler Cycle
 
- <span style="font-size: 34.0;">
-     **[https://cp-algorithms.com/graph/euler_path.htm](https://cp-algorithms.com/graph/euler_path.htm)**
- </span>
-# ![0B634545-82B1-48A6-8C2D-1B2D95A5A9E8](images/0B634545-82B1-48A6-8C2D-1B2D95A5A9E8.png)
- <span style="font-size: 27.0;">
-     # Non-recursive approach : 
+[https://cp-algorithms.com/graph/euler_path.htm](https://cp-algorithms.com/graph/euler_path.htm)
 
- </span>*const* int N = 2e5 + 5;
+![0B634545-82B1-48A6-8C2D-1B2D95A5A9E8](images/0B634545-82B1-48A6-8C2D-1B2D95A5A9E8.png)
+
+## Non-recursive approach: 
+
+```cpp
+const int N = 2e5 + 5;
 set<int> adjL[N];
-*vi* ans;
+vi ans;
 ll n, m;
-void solve()
-{
+
+void solve() {
     cin >> n >> m;
     ans.clear();
     f(i, n + 1){
@@ -30,73 +30,48 @@ void solve()
             return;
         }
     }
- <span style="font-size: 17.0;">
-         ***// stack St;***
- </span>
- <span style="font-size: 17.0;">
-         ***// put start vertex in St;***
- </span>
- <span style="font-size: 17.0;">
-         ***// until St is empty***
- </span>
- <span style="font-size: 17.0;">
-         ***// let V be the value at the top of St;***
- </span>
- <span style="font-size: 17.0;">
-         ***// if degree(V) = 0, then***
- </span>
- <span style="font-size: 17.0;">
-         ***//     add V to the answer;***
- </span>
- <span style="font-size: 17.0;">
-         ***//     remove V from the top of St;***
- </span>
- <span style="font-size: 17.0;">
-         ***// otherwise***
- </span>
- <span style="font-size: 17.0;">
-         ***//     find any edge coming out of V;***
- </span>
- <span style="font-size: 17.0;">
-         ***//     remove it from the graph;***
- </span>
- <span style="font-size: 17.0;">
-         ***//     put the second end of this edge in St;***
- </span> <span style="font-size: 17.0;">
+
+    // stack St;
+    // put start vertex in St;
+    // until St is empty
+    // let V be the value at the top of St;
+    // if degree(V) = 0, then
+    //      add V to the answer;
+    //      remove V from the top of St;
+    // otherwise
+    //      find any edge coming out of V;
+    //      remove it from the graph;
+    //      put the second end of this edge in St;
      
-    **stack<int> st;
+    stack<int> st;
     st.push(1);
     while(!st.empty()){
         int u = st.top();
         if(adjL[u].size() == 0){
             st.pop();
             ans.pb(u);
-        } else{
+        } else {
             int v = *adjL[u].begin();
             st.push(v);
             adjL[v].erase(u);
             adjL[u].erase(v);
         }
-    }**
- </span>
-#     if( (m+1) != ans.size()){
-#         cout << "IMPOSSIBLE" << endl;
-#         return;
-#     }
-#     cans;
-# }
- <span style="font-size: 27.0;">
-     # 
+    }
 
- </span> <span style="font-size: 27.0;">
-     # Recursive 
+    if( (m+1) != ans.size()){
+        cout << "IMPOSSIBLE" << endl;
+        return;
+    }
+    cans;
+}
+```
 
- </span> <span style="font-size: 27.0;">
-     # CSES code : 
+## Recursive 
 
- </span> <span style="font-family: .AppleSystemUIFont; font-size: 17.0;">
-     # [https://cses.fi/problemset/model/1691/](https://cses.fi/problemset/model/1691/)
- </span>
+### CSES code: 
+[https://cses.fi/problemset/model/1691/](https://cses.fi/problemset/model/1691/)
+
+```cpp
 #include <iostream>
 #include <set>
 #include <vector>
@@ -144,23 +119,24 @@ int main() {
     }
     cout << "\n";
 }
- <span style="font-size: 27.0;">
-     My code :
+```
 
- </span>![A088F457-37B8-4C7B-A6F5-9ECDB35462F4](images/A088F457-37B8-4C7B-A6F5-9ECDB35462F4.png)
-*const* int N = 2e5 + 5;
+### My code:
+
+![A088F457-37B8-4C7B-A6F5-9ECDB35462F4](images/A088F457-37B8-4C7B-A6F5-9ECDB35462F4.png)
+
+```cpp
+const int N = 2e5 + 5;
 set<int> adjL[N];
 set<int> removed[N];
-*vi* vis(N, 0);
-*vi* ans;
+vi vis(N, 0);
+vi ans;
 ll n, m;
-void dfs(int node)
-{
-    *// cout << node << endl;*
-    for (auto v : adjL[node])
-    {
-        if (removed[node].find(v) == removed[node].end())
-        {
+
+void dfs(int node) {
+    // cout << node << endl;
+    for (auto v : adjL[node]) {
+        if (removed[node].find(v) == removed[node].end()) {
             adjL[v].erase(node);
             removed[node].insert(v);
             dfs(v);
@@ -168,27 +144,23 @@ void dfs(int node)
     }
     ans.pb(node);
 }
-void solve()
-{
+
+void solve() {
     cin >> n >> m;
     vis.assign(n + 1, 0);
     ans.clear();
-    f(i, n + 1)
-    {
+    f(i, n + 1) {
         adjL[i].clear();
         removed[i].clear();
     }
-    f(i, m)
-    {
+    f(i, m) {
         ll u, v;
         cin >> u >> v;
         adjL[u].insert(v);
         adjL[v].insert(u);
     }
-    for (int i = 1; i <= n; i++)
-    {
-        if (adjL[i].size() % 2 == 1)
-        {
+    for (int i = 1; i <= n; i++) {
+        if (adjL[i].size() % 2 == 1) {
             cout << "IMPOSSIBLE" << endl;
             return;
         }
@@ -200,12 +172,15 @@ void solve()
     }
     cans;
 }
+```
 
- <span style="font-size: 27.0;">
-     # Hacky solution to Euler Path in directed graph: 
- </span> 
-# CSES solution: **[https://cses.fi/problemset/model/1693/](https://cses.fi/problemset/model/1693/)** 
-# **(Much better code)**
+## Hacky solution to Euler Path in directed graph:  
+
+### CSES solution: 
+[https://cses.fi/problemset/model/1693/](https://cses.fi/problemset/model/1693/)
+**(Much better code)**
+
+```cpp
 #include <algorithm>
 #include <iostream>
 #include <vector>
@@ -258,17 +233,18 @@ int main() {
     }
     cout << "\n";
 }
+```
 
- <span style="font-size: 27.0;">
-     # My own solution:
- </span>
-*const* int N = 2e5 + 5;
+### My own solution:
+
+```cpp
+const int N = 2e5 + 5;
 multiset<int> outadj[N];
 multiset<int> inadj[N];
-*vi* ans;
+vi ans;
 ll n, m;
-void solve()
-{
+
+void solve() {
     cin >> n >> m;
     ans.clear();
     f(i, n + 1){
@@ -291,17 +267,17 @@ void solve()
             return;
         }
     }
-    *// stack St;*
-    *// put start vertex in St;*
-    *// until St is empty*
-    *// let V be the value at the top of St;*
-    *// if degree(V) = 0, then*
-    *//     add V to the answer;*
-    *//     remove V from the top of St;*
-    *// otherwise*
-    *//     find any edge coming out of V;*
-    *//     remove it from the graph;*
-    *//     put the second end of this edge in St;*
+    // stack St;
+    // put start vertex in St;
+    // until St is empty
+    // let V be the value at the top of St;
+    // if degree(V) = 0, then
+    //      add V to the answer;
+    //      remove V from the top of St;
+    // otherwise
+    //      find any edge coming out of V;
+    //      remove it from the graph;
+    //      put the second end of this edge in St;
     inadj[1].insert(n);
     outadj[n].insert(1);
     stack<int> st;
@@ -314,7 +290,7 @@ void solve()
         } else{
             int v = *outadj[u].begin();
             st.push(v);
-            *// adjL[v].erase(u);*
+            // adjL[v].erase(u);
             outadj[u].erase(outadj[u].find(v));
         }
     }
@@ -323,10 +299,10 @@ void solve()
         return;
     }
     reverse(all(ans));
-    *// cans;*
-    *vvi* loops;
+    // cans;
+    vvi loops;
     int lastind = 0;
-    *vi* curloop;
+    vi curloop;
     for(int i = 1; i<(ans.size()); i++){
         if(ans[i] == 1){
             if(!curloop.empty() && curloop.back() == n){
@@ -345,11 +321,11 @@ void solve()
         cout << loops[i];
     }
     cout << 1 << " " << loops[lastind]<< endl;
-    *// cans;*
+    // cans;
 }
+```
 
-
-# ![EF524288-C955-42A8-8E7A-5101AEAD3BCC](images/EF524288-C955-42A8-8E7A-5101AEAD3BCC.png)
+![EF524288-C955-42A8-8E7A-5101AEAD3BCC](images/EF524288-C955-42A8-8E7A-5101AEAD3BCC.png)
 ![883AA39F-0D2B-4FB7-9CB6-E44CF083C53D](images/883AA39F-0D2B-4FB7-9CB6-E44CF083C53D.png)
 ![87E1AA90-C8FD-44E9-BADB-C5287799C5D0](images/87E1AA90-C8FD-44E9-BADB-C5287799C5D0.png)
 ![85FB892E-BFF2-441F-9E03-5830F13BC51F](images/85FB892E-BFF2-441F-9E03-5830F13BC51F.png)
