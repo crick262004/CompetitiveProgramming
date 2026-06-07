@@ -1,18 +1,14 @@
-# CYCLE DETECTION
+// 1. DIRECTED DFS: THE PATH + VIS ALGORITHM. 
+// CAN’T JUST CONSIDER VISITED WHEN DIRECTED GRAPH.
 
-
-# DIRECTED 
-# DFS: THE PATH + VIS ALGORITHM. 
-# CAN’T JUST CONSIDER VISITED WHEN DIRECTED GRAPH.
-
-*const* int N = 2e5 + 5; 
-*vi* adjL[N];
-*vi* vis(N,0);
-*vi* path(N,0);
+const int N = 2e5 + 5; 
+vi adjL[N];
+vi vis(N,0);
+vi path(N,0);
 ll n, m;
-*vi* ans;
-bool dfs(int node, *vi&* cur) {
-    *// cout << node << endl;*
+vi ans;
+bool dfs(int node, vi& cur) {
+    // cout << node << endl;
     vis[node] = 1; 
     path[node] = 1;
     cur.pb(node);
@@ -24,7 +20,7 @@ bool dfs(int node, *vi&* cur) {
                 return true; 
             }
         }
-        *// visited node but not a parent node*
+        // visited node but not a parent node
         else if(path[adjacentNode]){
             bool st = false;
             for(int i = 0; i<cur.size(); i++){
@@ -53,7 +49,7 @@ void solve(){
         ll u, v; cin >> u >> v;
         adjL[u].pb(v);
     }
-    *vi* cur = {};
+    vi cur = {};
     for(int i = 1;i<=n;i++) {
         if(!vis[i]) {
             if(dfs(i, cur) == true){
@@ -66,8 +62,7 @@ void solve(){
     cout << "IMPOSSIBLE" << endl;
 }
 
-# DIRECTED BFS:
-USE TOPO SORT, JUST CHECK IF (TOPO.SIZE() == N)
+// 2. DIRECTED BFS: USE TOPO SORT, JUST CHECK IF (TOPO.SIZE() == N)
 
 class Solution {
 public:
@@ -107,41 +102,41 @@ public:
 
 
 
-# UNDIRECTED BFS:
+// 3. UNDIRECTED BFS:
 class Solution {
   private: 
   bool detect(int src, vector<int> adj[], int vis[]) {
       vis[src] = 1; 
-      *// store <source node, parent node>*
+      // store <source node, parent node>
       queue<pair<int,int>> q; 
       q.push({src, -1}); 
-      *// traverse until queue is not empty*
+      // traverse until queue is not empty
       while(!q.empty()) {
           int node = q.front().first; 
           int parent = q.front().second; 
           q.pop(); 
           
-          *// go to all adjacent nodes*
+          // go to all adjacent nodes
           for(auto adjacentNode: adj[node]) {
-              *// if adjacent node is unvisited*
+              // if adjacent node is unvisited
               if(!vis[adjacentNode]) {
                   vis[adjacentNode] = 1; 
                   q.push({adjacentNode, node}); 
               }
-              *// if adjacent node is visited and is not it's own parent node*
+              // if adjacent node is visited and is not it's own parent node
               else if(parent != adjacentNode) {
-                  *// yes it is a cycle*
+                  // yes it is a cycle
                   return true; 
               }
           }
       }
-      *// there's no cycle*
+      // there's no cycle
       return false; 
   }
   public:
-    *// Function to detect cycle in an undirected graph.*
+    // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
-        *// initialise them as unvisited* 
+        // initialise them as unvisited 
         int vis[V] = {0};
         for(int i = 0;i<V;i++) {
             if(!vis[i]) {
@@ -152,20 +147,20 @@ class Solution {
     }
 };
 
-# UNDIRECTED DFS: VISIT + PARENT NODE
+// 4. UNDIRECTED DFS: VISIT + PARENT NODE
 
-*vi* ans;
-bool dfs(int node, int parent, *vi&* cur) {
+vi ans;
+bool dfs(int node, int parent, vi& cur) {
     vis[node] = 1;
     cur.pb(node);
-    *// visit adjacent nodes*
+    // visit adjacent nodes
     for(auto adjacentNode: adjL[node]) {
-        *// unvisited adjacent node*
+        // unvisited adjacent node
         if(!vis[adjacentNode]) {
             if(dfs(adjacentNode, node, cur) == true) 
                 return true; 
         }
-        *// visited node but not a parent node*
+        // visited node but not a parent node
         else if(adjacentNode != parent){
             bool st = false;
             for(int i = 0; i<cur.size(); i++){
@@ -187,9 +182,9 @@ void solve(){
     f(i,m){
         ll u, v; cin >> u >> v;
         adjL[u].pb(v);
-        adjL[v].pb(u); *// ya not, if directed*
+        adjL[v].pb(u); // ya not, if directed
     }
-    *vi* cur = {};
+    vi cur = {};
     for(int i = 1;i<=n;i++) {
         if(!vis[i]) {
             if(dfs(i, -1, cur) == true){

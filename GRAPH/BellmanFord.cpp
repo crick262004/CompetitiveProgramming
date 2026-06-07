@@ -1,17 +1,14 @@
-# shortest distance of all the vertices from the source vertex S
+// shortest distance of all the vertices from the source vertex S weighted, directed and connected graph with negative weights. 
 
- <span style="font-size: 25.0;">
-     **weighted, directed and connected graph with negative weights. 
+// BF is used as a go-to algo to detect negative cycle in graphs.
+// Remove the dist[u] != 1e18 wala logic in that case.
 
-BF is used as a go-to algo to detect negative cycle in graphs.
-Remove the dist[u] != 1e18 wala logic in that case.**
+//  If the Graph contains a negative cycle then return an array consisting of only -1.
 
 
- </span> If the Graph contains a negative cycle then return an array consisting of only -1.
-
-**Bellman Ford Algorithm**
-*const* int N = 2510; 
-*vpi* adjL[N];
+// 1. Main Algo
+const int N = 2510; 
+vpi adjL[N];
 ll n, m;
 void solve(){
     cin >> n >> m;
@@ -22,7 +19,7 @@ void solve(){
         ll u, v, w; cin >> u >> v >>z w;
         adjL[u].pb({v, w});
     }
-    vector<*pi*> dist(n+1, {1e18, -1});
+    vector<pi> dist(n+1, {1e18, -1});
     dist[1] = {0, -1};
     for (int i = 1; i<n; i++) {
         for(int u = 1; u<=n; u++){
@@ -40,7 +37,7 @@ void solve(){
             int v = it.ff;
             int wt = it.ss;
             if (dist[u].ff != 1e18 && dist[u].ff + wt < dist[v].ff) {
-                *// negative cycle present*
+                // negative cycle present
             }
         }
     }
@@ -50,11 +47,8 @@ void solve(){
 
 
 
-
- <span style="font-size: 25.0;">
-     **BF Algo(but for max distance path) that also handles false cycles (positive ( bcos of max distance logic) cycles that are present but not a threat to distance[destination] are ignored, (because the cycle isn’t connected to N) )**
- </span>
-*vpi* adjL[N];
+// 2. BF Algo(but for max distance path) that also handles false cycles (positive ( bcos of max distance logic) cycles that are present but not a threat to distance[destination] are ignored, (because the cycle isn’t connected to N) )
+vpi adjL[N];
 void solve(){
 
     ll n; 
@@ -66,9 +60,9 @@ void solve(){
         ll u, v, w; cin >> u >> v >> w;
         adjL[u].pb({v, w});
     }
-    *vi* ton(n+1, 0); // is node connected to <u>n / destination</u> node
+    vi ton(n+1, 0); // is node connected to n / destination node
     queue<int> q;
-    *vpi* RadjL[n+1];
+    vpi RadjL[n+1];
     f(i,n+1){
         for(auto it : adjL[i]){
             int v = it.ff;
@@ -115,10 +109,8 @@ void solve(){
 }
 
 
- <span style="font-size: 25.0;">
-     **BF Algo for finding neg cycle and printing it. ( also having a parent node value for each node, stored in distance vector )**
- </span>
-*const* int N = 5001; 
+// 3. BF Algo for finding neg cycle and printing it. ( also having a parent node value for each node, stored in distance vector )
+const int N = 5001; 
 vpi adjL[N];
 ll n, m;
 void solve(){
@@ -148,7 +140,7 @@ void solve(){
             int v = it.ff;
             int wt = it.ss;
             if (dist[u].ff + wt < dist[v].ff) {
-                *// cout << u << " " << v << endl;*
+                // cout << u << " " << v << endl;
                 cyes;
                 vi nodes;
                 nodes.pb(v);

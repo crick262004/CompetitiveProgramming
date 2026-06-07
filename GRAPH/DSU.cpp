@@ -1,6 +1,3 @@
-# DISJOINT SET
-
-
 class DisjointSet {
     vector<int> rank, parent, size;
 public:

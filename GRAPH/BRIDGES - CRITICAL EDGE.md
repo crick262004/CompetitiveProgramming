@@ -1,16 +1,20 @@
-# BRIDGES / CRITICAL EDGE
+# Bridges / Critical Edge
 
-CONNECTED , UNDIRECTED
+**Context:** Connected, Undirected Graph
 
- <span style="font-size: 22.0;">
-     A critical connection is a connection that, if removed, will make some nodes unable to reach some other nodes.
+> A critical connection is a connection that, if removed, will make some nodes unable to reach some other nodes.
 
+---
 
- </span>int tin[N];
+## Global Array / Vector Implementation
+
+```cpp
+int tin[N];
 int low[N];
 vector<int> vis;
 int timer;
-*vpi* bridges;
+vpi bridges;
+
 void dfs(int node, int parent){
     vis[node] = 1;
     tin[node] = low[node] = timer;
@@ -30,16 +34,18 @@ void dfs(int node, int parent){
     }
 }
 
-    timer = 1;
-    vis.assign(n+1, 0);
-    bridges.clear();
-    dfs(root, -1);
+// Initialization in driver code:
+timer = 1;
+vis.assign(n+1, 0);
+bridges.clear();
+dfs(root, -1);
+```
 
+---
 
+## Using Tarjan's Algorithm (Time In & Low Time)
 
-
-
-**Using Tarjan's Algorithm of time in and low time:**
+```cpp
 class Solution {
 private:
     int timer = 1;
@@ -53,7 +59,7 @@ private:
             if (vis[it] == 0) {
                 dfs(it, node, vis, adj, tin, low, bridges);
                 low[node] = min(low[it], low[node]);
-                *// node --- it*
+                // node --- it
                 if (low[it] > tin[node]) {
                     bridges.push_back({it, node});
                 }
@@ -64,8 +70,7 @@ private:
         }
     }
 public:
-    vector<vector<int>> criticalConnections(int n,
-    vector<vector<int>>& connections) {
+    vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
         vector<int> adj[n];
         for (auto it : connections) {
             int u = it[0], v = it[1];
@@ -80,12 +85,12 @@ public:
         return bridges;
     }
 };
+```
 
-# INTUITION:
+---
+
+## Intuition
+
 ![A609F1EA-3213-4FC0-B138-1B39E603D44F](images/A609F1EA-3213-4FC0-B138-1B39E603D44F.png)
 
- <span style="font-size: 33.0;">
-     **Whenever you want to do something with each cycle : Break the graph about bridges.**
-
- </span>
-
+> **Core Strategy:** Whenever you want to do something with each cycle: **Break the graph about bridges.**

@@ -1,12 +1,7 @@
-# MST
-
-Given a weighted, undirected, and connected graph with V vertices and E edges, your task is to find the sum of the weights of the edges in the Minimum Spanning Tree (MST) of the graph. 
+// Given a weighted, undirected, and connected graph with V vertices and E edges, your task is to find the sum of the weights of the edges in the Minimum Spanning Tree (MST) of the graph. 
 
 
- <span style="font-size: 19.0;">
-     **PRIMS**
- </span>
-if they want the MST too, we will have to store triplets in the pq( now we also need to strore the source node for each edge) and also create a vector of triplets called MST jahan while adding dist to sum, we also add the triplet to MST vector.
+// 1.PRIMS: they want the MST too, we will have to store triplets in the pq( now we also need to strore the source node for each edge) and also create a vector of triplets called MST jahan while adding dist to sum, we also add the triplet to MST vector.
 class Solution
 {
 public:
@@ -43,13 +38,11 @@ public:
 };
 
 
- <span style="font-size: 19.0;">
-     **KRUSKAL**
-
- </span>*const* int N = 2e5 + 5; 
-*vpi* adjL[N];
+// 2. KRUSKAL
+const int N = 2e5 + 5; 
+vpi adjL[N];
 ll n, m;
-class *DisjointSet* {
+class DisjointSet {
 public:
     vector<int> rank, parent, size;
     DisjointSet(int n) {
@@ -106,10 +99,9 @@ void solve(){
     f(i,m){
         ll u, v, w; cin >> u >> v >> w;
         adjL[u].pb({v, w});
-        adjL[v].pb({u, w}); *// ya not, if directed*
+        adjL[v].pb({u, w}); // ya not, if directed
     }
-    <span style="font-size: 18.0;">
-      **vector<pair<int, pair<int, int>>> edges;
+    vector<pair<int, pair<int, int>>> edges;
     for (int i = 1; i <= n; i++) {
         for (auto it : adjL[i]) {
             int adjNode = it.first;
@@ -118,12 +110,8 @@ void solve(){
 
             edges.push_back({wt, {node, adjNode}});
         }
-    }**
-    
- </span> <span style="font-size: 18.0;">
-     ***DisjointSet***
- </span> <span style="font-size: 18.0;">
-      **ds(n+1);
+    }
+    DisjointSet ds(n+1);
     sort(edges.begin(), edges.end());
     int mstWt = 0;
     for (auto it : edges) {
@@ -135,8 +123,7 @@ void solve(){
             mstWt += wt;
             ds.unionBySize(u, v);
         }
-    }**
- </span>
+    }
     set<int> cc;
     for(int i = 1; i<=n; i++){
         cc.insert(ds.findUPar(i));

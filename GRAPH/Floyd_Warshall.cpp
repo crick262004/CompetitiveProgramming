@@ -1,12 +1,7 @@
-# shortest distances between every pair of vertices in a given edge…
+// shortest distances between every pair of vertices in a given edge-weighted directed graph.
 
- <span style="font-size: 21.0;">
-     **shortest distances between every pair of vertices in a given edge-weighted directed graph.**
-
-
- </span>**Floyd Warshall Algorithm**
-*const* int N = 550; 
-*vvi* adjL(N, *vi*(N, 1e18));
+const int N = 550; 
+vvi adjL(N, vi(N, 1e18));
 ll n, m;
 void solve(){
     ll q;
