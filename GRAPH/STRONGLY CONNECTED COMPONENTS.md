@@ -5,6 +5,9 @@
 Find the number of strongly connected components in the graph.
 A component is called a Strongly Connected Component (SCC) only if for every possible pair of vertices $(u, v)$ inside that component, $u$ is reachable from $v$ and $v$ is reachable from $u$.
 
+# Main Logic: 
+By reversing the graph, you effectively "break" the paths between distinct SCCs while keeping the internal connectivity of each SCC intact. This allows the subsequent DFS to be constrained within the boundaries of a single component at a time
+
 ```cpp
 const int N = 2e5 + 5; 
 vi adjL[N];
