@@ -5,7 +5,7 @@
 class Solution
 {
 public:
-	*//Function to find sum of weights of edges of the Minimum Spanning Tree.*
+	//Function to find sum of weights of edges of the Minimum Spanning Tree.
 	int spanningTree(int V, vector<vector<int>> adj[])
 	{
 		priority_queue<pair<int, int>,
