@@ -1,4 +1,6 @@
-// XOR THING
+// Approach: find the maxXor of a number with a list of numbers by doing a 
+// greedy traversal into the Bit Trie, while following the maximal XOR prefix possible.
+
 // Node structure* 
 // for the Trie
 struct Node {
